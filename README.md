@@ -1,0 +1,2 @@
+# bidbot
+VFX Bidding Tool
