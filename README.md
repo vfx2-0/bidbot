@@ -38,6 +38,8 @@ Improvements / Features To Add
 
  Custom VFX tags creation + editing
 
+ Upload/download local breakdown files
+
  Autofill/dropdown for existing scene numbers
 
  Bid days per tag (auto-populate in CSV export)
