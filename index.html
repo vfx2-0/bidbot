@@ -212,6 +212,147 @@
       font-size: 0.8rem;
       color: #00d4ff;
     }
+    
+    /* Tag management styles */
+    .tag-management-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 1rem;
+    }
+    
+    .tag-management-table th {
+      background-color: rgba(0, 0, 0, 0.3);
+      padding: 8px 12px;
+      text-align: left;
+      font-weight: 600;
+      font-size: 0.8rem;
+    }
+    
+    .tag-management-table td {
+      padding: 8px 12px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .tag-management-table input {
+      width: 100%;
+      padding: 6px 8px;
+      background: rgba(0, 0, 0, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 4px;
+      color: white;
+    }
+    
+    .tag-management-table select {
+      width: 100%;
+      padding: 6px 8px;
+      background: rgba(0, 0, 0, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 4px;
+      color: white;
+    }
+    
+    .tag-management-table .action-cell {
+      width: 40px;
+      text-align: center;
+    }
+    
+    .tag-management-table .action-cell button {
+      background: transparent;
+      border: none;
+      color: #ff6b6b;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    
+    .tag-management-table .action-cell button:hover {
+      color: #ff3b3b;
+    }
+    
+    .tag-group-select {
+      background: rgba(0, 0, 0, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 4px;
+      padding: 6px 8px;
+      color: white;
+      width: 100%;
+    }
+    
+    .tag-group-select:focus {
+      outline: none;
+      border-color: #00d4ff;
+    }
+    
+    .tag-management-actions {
+      display: flex;
+      gap: 8px;
+      margin-top: 1rem;
+    }
+    
+    .tag-management-actions button {
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    
+    .tag-management-actions button:hover {
+      transform: translateY(-2px);
+    }
+    
+    .tag-management-actions button:active {
+      transform: translateY(0);
+    }
+    
+    .tag-management-actions .save-btn {
+      background: linear-gradient(to right, #00d4ff, #0077ff);
+      color: white;
+      border: none;
+    }
+    
+    .tag-management-actions .add-btn {
+      background: linear-gradient(to right, #7c3aed, #5e35b1);
+      color: white;
+      border: none;
+    }
+    
+    .tag-management-actions .reset-btn {
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .tag-management-actions .cancel-btn {
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .tag-group-option {
+      padding: 4px 8px;
+    }
+    
+    .tag-group-option:hover {
+      background: rgba(0, 212, 255, 0.2);
+    }
+    
+    .tag-management-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+    
+    .tag-management-header h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #00d4ff;
+    }
+    
+    .tag-management-header p {
+      font-size: 0.85rem;
+      color: rgba(255, 255, 255, 0.6);
+    }
   </style>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -246,8 +387,8 @@
         </h2>
         <div class="font-size-control">
           <i class="fas fa-font text-gray-400 text-sm"></i>
-          <input 
-             type="range"
+          <input
+              type="range"
              min="8"
              max="24"
              value="12"
@@ -258,8 +399,8 @@
           <span class="font-size-value" id="fontSizeValue">12px</span>
         </div>
       </div>
-      <div 
-        id="scriptInput"
+      <div
+         id="scriptInput"
         contenteditable="true"
         onmouseup="storeSelection()"
         onkeyup="storeSelection()"
@@ -267,33 +408,23 @@
       >
         <div class="coffee-stain coffee-stain-1"></div>
         <div class="coffee-stain coffee-stain-2"></div>
-        INT. LAB – DAY
-A CG alien runs across the lab, knocking over glowing vials. The scientist yells and dives under a table as a monitor explodes.
-
-EXT. FOREST – NIGHT
-Fog rolls between the trees. A drone camera flies overhead. Lightning illuminates the alien spacecraft hovering above.
-
-INT. SPACESHIP BRIDGE – CONTINUOUS
-The alien commander studies Earth through a holographic display. Sparks fly from damaged control panels as alarms blare.
-
-EXT. CITY STREET – DAY
-A massive explosion rocks the downtown area. Cars flip through the air as debris rains down. Citizens run screaming as buildings collapse in the distance.</div>
+        INT. LAB – DAY A CG alien runs across the lab, knocking over glowing vials. The scientist yells and dives under a table as a monitor explodes.  EXT. FOREST – NIGHT Fog rolls between the trees. A drone camera flies overhead. Lightning illuminates the alien spacecraft hovering above.  INT. SPACESHIP BRIDGE – CONTINUOUS The alien commander studies Earth through a holographic display. Sparks fly from damaged control panels as alarms blare.  EXT. CITY STREET – DAY A massive explosion rocks the downtown area. Cars flip through the air as debris rains down. Citizens run screaming as buildings collapse in the distance.</div>
     </div>
 
     <!-- Controls Panel -->
     <div class="bg-gray-900/80 backdrop-blur-sm rounded-xl border border-gray-800 overflow-hidden flex flex-col panel-height sticky top-[4.5rem] self-start">
       <!-- Tab Navigation -->
       <div class="bg-gray-900/50 flex border-b border-gray-700">
-        <button 
-           onclick="switchTab('tagging')"
+        <button
+            onclick="switchTab('tagging')"
            class="tab-button flex-1 py-3 px-4 text-center font-medium border-b-2 border-cyan-500 text-cyan-400 hover:bg-gray-800/50 transition-all flex items-center justify-center space-x-2"
            id="tagging-tab-btn"
         >
           <i class="fas fa-tag"></i>
           <span>VFX Tagging</span>
         </button>
-        <button 
-           onclick="switchTab('history')"
+        <button
+            onclick="switchTab('history')"
            class="tab-button flex-1 py-3 px-4 text-center font-medium border-b-2 border-transparent hover:bg-gray-800/50 transition-all flex items-center justify-center space-x-2"
            id="history-tab-btn"
         >
@@ -301,13 +432,21 @@ A massive explosion rocks the downtown area. Cars flip through the air as debris
           <span>Tagged Shots</span>
           <span id="taggedCount" class="bg-cyan-500/20 text-cyan-400 text-2xs px-1.5 py-0.5 rounded-full">0</span>
         </button>
-        <button 
-           onclick="switchTab('stats')"
+        <button
+            onclick="switchTab('stats')"
            class="tab-button flex-1 py-3 px-4 text-center font-medium border-b-2 border-transparent hover:bg-gray-800/50 transition-all flex items-center justify-center space-x-2"
            id="stats-tab-btn"
         >
           <i class="fas fa-chart-pie"></i>
           <span>Statistics</span>
+        </button>
+        <button
+            onclick="switchTab('manage-tags')"
+           class="tab-button flex-1 py-3 px-4 text-center font-medium border-b-2 border-transparent hover:bg-gray-800/50 transition-all flex items-center justify-center space-x-2"
+           id="manage-tags-tab-btn"
+        >
+          <i class="fas fa-tags"></i>
+          <span>Manage Tags</span>
         </button>
       </div>
 
@@ -383,8 +522,8 @@ A massive explosion rocks the downtown area. Cars flip through the air as debris
             <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
               <i class="fas fa-search text-gray-500"></i>
             </div>
-            <input 
-               type="text"
+            <input
+                type="text"
               id="tagSearch"
               placeholder="Search tags..."
               onkeyup="filterTags()"
@@ -393,234 +532,8 @@ A massive explosion rocks the downtown area. Cars flip through the air as debris
           </div>
 
           <!-- Accordion for Tag Groups -->
-          <div class="space-y-4">
-            <!-- 2D COMP & DMP -->
-            <div class="tag-group" data-category="2d-comp">
-              <div class="accordion-header flex justify-between items-center p-2 bg-gray-900/50 rounded-lg cursor-pointer" onclick="toggleAccordion(this)">
-                <h3 class="text-sm font-semibold uppercase tracking-wider text-cyan-400 flex items-center space-x-2">
-                  <i class="fas fa-layer-group"></i>
-                  <span>2D COMP & DMP</span>
-                </h3>
-                <i class="fas fa-chevron-down text-gray-500 transform transition-transform duration-200"></i>
-              </div>
-              <div class="accordion-content mt-2 grid grid-cols-1 sm:grid-cols-2 gap-2 p-2 hidden">
-                <button onclick="selectTag(this)" class="tag-button px-3 py-2 bg-gray-800 hover:bg-gray-700 border border-gray-700 rounded-lg text-sm text-left transition-all hover:shadow-md">
-                  2D COMP COMPLEX
-                </button>
-                <button onclick="selectTag(this)" class="tag-button px-3 py-2 bg-gray-800 hover:bg-gray-700 border border-gray-700 rounded-lg text-sm text-left transition-all hover:shadow-md">
-                  2D COMP MED
-                </button>
-                <button onclick="selectTag(this)" class="tag-button px-3 py-2 bg-gray-800 hover:bg-gray-700 border border-gray-700 rounded-lg text-sm text-left transition-all hover:shadow-md">
-                  2D COMP SIMPL
-                </button>
-                <button onclick="selectTag(this)" class="tag-button px-3 py-2 bg-gray-800 hover:bg-gray-700 border border-gray-700 rounded-lg text-sm text-left transition-all hover:shadow-md">
-                  2D DMP COMPLEX
-                </button>
-                <button onclick="selectTag(this)" class="tag-button px-3 py-2 bg-gray-800 hover:bg-gray-700 border border-gray-700 rounded-lg text-sm text-left transition-all hover:shadow-md">
-                  2D DMP MED
-                </button>
-                <button onclick="selectTag(this)" class="tag-button px-3 py-2 bg-gray-800 hover:bg-gray-700 border border-gray-700 rounded-lg text-sm text-left transition-all hover:shadow-md">
-                  2D DMP SIMPL
-                </button>
-              </div>
-            </div>
-
-            <!-- CROWDS -->
-            <div class="tag-group" data-category="crowds">
-              <div class="accordion-header flex justify-between items-center p-2 bg-gray-900/50 rounded-lg cursor-pointer" onclick="toggleAccordion(this)">
-                <h3 class="text-sm font-semibold uppercase tracking-wider text-cyan-400 flex items-center space-x-2">
-                  <i class="fas fa-users"></i>
-                  <span>CROWDS</span>
-                </h3>
-                <i class="fas fa-chevron-down text-gray-500 transform transition-transform"></i>
-              </div>
-              <div class="accordion-content mt-2 grid grid-cols-1 sm:grid-cols-2 gap-2 p-2 hidden">
-                <button onclick="selectTag(this)" class="tag-button px-3 py-2 bg-gray-800 hover:bg-gray-700 border border-gray-700 rounded-lg text-sm text-left transition-all hover:shadow-md">
-                  2D CROWD DUPL COMPLEX
-                </button>
-                <button onclick="selectTag(this)" class="tag-button px-3 py-2 bg-gray-800 hover:bg-gray-700 border border-gray-700 rounded-lg text-sm text-left transition-all hover:shadow-md">
-                  2D CROWD DUPL MED
-                </button>
-                <button onclick="selectTag(this)" class="tag-button px-3 py-2 bg-gray-800 hover:bg-gray-700 border border-gray-700 rounded-lg text-sm text-left transition-all hover:shadow-md">
-                  2D CROWD DUPL SIMPL
-                </button>
-                <button onclick="selectTag(this)" class="tag-button px-3 py-2 bg-gray-800 hover:bg-gray-700 border border-gray-700 rounded-lg text-sm text-left transition-all hover:shadow-md">
-                  3D CROWDS SIMPL
-                </button>
-                <button onclick="selectTag(this)" class="tag-button px-3 py-2 bg-gray-800 hover:bg-gray-700 border border-gray-700 rounded-lg text-sm text-left transition-all hover:shadow-md">
-                  3D CROWDS MED
-                </button>
-                <button onclick="selectTag(this)" class="tag-button px-3 py-2 bg-gray-800 hover:bg-gray-700 border border-gray-700 rounded-lg text-sm text-left transition-all hover:shadow-md">
-                  3D CROWDS COMPLEX
-                </button>
-              </div>
-            </div>
-
-            <!-- 2D OTHER -->
-            <div class="tag-group" data-category="2d-other">
-              <div class="accordion-header flex justify-between items-center p-2 bg-gray-900/50 rounded-lg cursor-pointer" onclick="toggleAccordion(this)">
-                <h3 class="text-sm font-semibold uppercase tracking-wider text-cyan-400 flex items-center space-x-2">
-                  <i class="fas fa-shapes"></i>
-                  <span>2D OTHER</span>
-                </h3>
-                <i class="fas fa-chevron-down text-gray-500 transform transition-transform"></i>
-              </div>
-              <div class="accordion-content mt-2 grid grid-cols-1 sm:grid-cols-2 gap-2 p-2 hidden">
-                <button onclick="selectTag(this)" class="tag-button px-3 py-2 bg-gray-800 hover:bg-gray-700 border border-gray-700 rounded-lg text-sm text-left transition-all hover:shadow-md">
-                  2D BLOOD/MUZZLE FLASH/BULLET HIT
-                </button>
-                <button onclick="selectTag(this)" class="tag-button px-3 py-2 bg-gray-800 hover:bg-gray-700 border border-gray-700 rounded-lg text-sm text-left transition-all hover:shadow-md">
-                  2D FACE REPL
-                </button>
-                <button onclick="selectTag(this)" class="tag-button px-3 py-2 bg-gray-800 hover:bg-gray-700 border border-gray-700 rounded-lg text-sm text-left transition-all hover:shadow-md">
-                  2D FILTER
-                </button>
-                <button onclick="selectTag(this)" class="tag-button px-3 py-2 bg-gray-800 hover:bg-gray-700 border border-gray-700 rounded-lg text-sm text-left transition-all hover:shadow-md">
-                  2D FX STOCK FOOTAGE
-                </button>
-                <button onclick="selectTag(this)" class="tag-button px-3 py-2 bg-gray-800 hover:bg-gray-700 border border-gray-700 rounded-lg text-sm text-left transition-all hover:shadow-md">
-                  2D HUD OVERLAY
-                </button>
-                <button onclick="selectTag(this)" class="tag-button px-3 py-2 bg-gray-800 hover:bg-gray-700 border border-gray-700 rounded-lg text-sm text-left transition-all hover:shadow-md">
-                  2D SCREEN REPLACEMENT
-                </button>
-                <button onclick="selectTag(this)" class="tag-button px-3 py-2 bg-gray-800 hover:bg-gray-700 border border-gray-700 rounded-lg text-sm text-left transition-all hover:shadow-md">
-                  TITLE CARD
-                </button>
-              </div>
-            </div>
-
-            <!-- 3D FULL CGI -->
-            <div class="tag-group" data-category="3d-full-cgi">
-              <div class="accordion-header flex justify-between items-center p-2 bg-gray-900/50 rounded-lg cursor-pointer" onclick="toggleAccordion(this)">
-                <h3 class="text-sm font-semibold uppercase tracking-wider text-cyan-400 flex items-center space-x-2">
-                  <i class="fas fa-cube"></i>
-                  <span>3D FULL CGI</span>
-                </h3>
-                <i class="fas fa-chevron-down text-gray-500 transform transition-transform"></i>
-              </div>
-              <div class="accordion-content mt-2 grid grid-cols-1 sm:grid-cols-3 gap-2 p-2 hidden">
-                <button onclick="selectTag(this)" class="tag-button px-3 py-2 bg-gray-800 hover:bg-gray-700 border border-gray-700 rounded-lg text-sm text-left transition-all hover:shadow-md">
-                  3D FULL CGI SIMPL
-                </button>
-                <button onclick="selectTag(this)" class="tag-button px-3 py-2 bg-gray-800 hover:bg-gray-700 border border-gray-700 rounded-lg text-sm text-left transition-all hover:shadow-md">
-                  3D FULL CGI MED
-                </button>
-                <button onclick="selectTag(this)" class="tag-button px-3 py-2 bg-gray-800 hover:bg-gray-700 border border-gray-700 rounded-lg text-sm text-left transition-all hover:shadow-md">
-                  3D FULL CGI COMPLEX
-                </button>
-              </div>
-            </div>
-
-            <!-- 3D ENVIRO -->
-            <div class="tag-group" data-category="3d-enviro">
-              <div class="accordion-header flex justify-between items-center p-2 bg-gray-900/50 rounded-lg cursor-pointer" onclick="toggleAccordion(this)">
-                <h3 class="text-sm font-semibold uppercase tracking-wider text-cyan-400 flex items-center space-x-2">
-                  <i class="fas fa-mountain"></i>
-                  <span>3D ENVIRO</span>
-                </h3>
-                <i class="fas fa-chevron-down text-gray-500 transform transition-transform"></i>
-              </div>
-              <div class="accordion-content mt-2 grid grid-cols-1 sm:grid-cols-3 gap-2 p-2 hidden">
-                <button onclick="selectTag(this)" class="tag-button px-3 py-2 bg-gray-800 hover:bg-gray-700 border border-gray-700 rounded-lg text-sm text-left transition-all hover:shadow-md">
-                  3D ENVIRO SIMPL
-                </button>
-                <button onclick="selectTag(this)" class="tag-button px-3 py-2 bg-gray-800 hover:bg-gray-700 border border-gray-700 rounded-lg text-sm text-left transition-all hover:shadow-md">
-                  3D ENVIRO MED
-                </button>
-                <button onclick="selectTag(this)" class="tag-button px-3 py-2 bg-gray-800 hover:bg-gray-700 border border-gray-700 rounded-lg text-sm text-left transition-all hover:shadow-md">
-                  3D ENVIRO COMPLEX
-                </button>
-              </div>
-            </div>
-
-            <!-- 3D OBJECT -->
-            <div class="tag-group" data-category="3d-object">
-              <div class="accordion-header flex justify-between items-center p-2 bg-gray-900/50 rounded-lg cursor-pointer" onclick="toggleAccordion(this)">
-                <h3 class="text-sm font-semibold uppercase tracking-wider text-cyan-400 flex items-center space-x-2">
-                  <i class="fas fa-cube"></i>
-                  <span>3D OBJECT</span>
-                </h3>
-                <i class="fas fa-chevron-down text-gray-500 transform transition-transform"></i>
-              </div>
-              <div class="accordion-content mt-2 grid grid-cols-1 sm:grid-cols-3 gap-2 p-2 hidden">
-                <button onclick="selectTag(this)" class="tag-button px-3 py-2 bg-gray-800 hover:bg-gray-700 border border-gray-700 rounded-lg text-sm text-left transition-all hover:shadow-md">
-                  3D OBJECT SIMPL
-                </button>
-                <button onclick="selectTag(this)" class="tag-button px-3 py-2 bg-gray-800 hover:bg-gray-700 border border-gray-700 rounded-lg text-sm text-left transition-all hover:shadow-md">
-                  3D OBJECT MED
-                </button>
-                <button onclick="selectTag(this)" class="tag-button px-3 py-2 bg-gray-800 hover:bg-gray-700 border border-gray-700 rounded-lg text-sm text-left transition-all hover:shadow-md">
-                  3D OBJECT COMPLEX
-                </button>
-              </div>
-            </div>
-
-            <!-- 3D CHARACTER -->
-            <div class="tag-group" data-category="3d-character">
-              <div class="accordion-header flex justify-between items-center p-2 bg-gray-900/50 rounded-lg cursor-pointer" onclick="toggleAccordion(this)">
-                <h3 class="text-sm font-semibold uppercase tracking-wider text-cyan-400 flex items-center space-x-2">
-                  <i class="fas fa-user-astronaut"></i>
-                  <span>3D CHARACTER</span>
-                </h3>
-                <i class="fas fa-chevron-down text-gray-500 transform transition-transform"></i>
-              </div>
-              <div class="accordion-content mt-2 grid grid-cols-1 sm:grid-cols-3 gap-2 p-2 hidden">
-                <button onclick="selectTag(this)" class="tag-button px-3 py-2 bg-gray-800 hover:bg-gray-700 border border-gray-700 rounded-lg text-sm text-left transition-all hover:shadow-md">
-                  3D CHARACTER SIMPL
-                </button>
-                <button onclick="selectTag(this)" class="tag-button px-3 py-2 bg-gray-800 hover:bg-gray-700 border border-gray-700 rounded-lg text-sm text-left transition-all hover:shadow-md">
-                  3D CHARACTER MED
-                </button>
-                <button onclick="selectTag(this)" class="tag-button px-3 py-2 bg-gray-800 hover:bg-gray-700 border border-gray-700 rounded-lg text-sm text-left transition-all hover:shadow-md">
-                  3D CHARACTER COMPLEX
-                </button>
-              </div>
-            </div>
-
-            <!-- 3D FX -->
-            <div class="tag-group" data-category="3d-fx">
-              <div class="accordion-header flex justify-between items-center p-2 bg-gray-900/50 rounded-lg cursor-pointer" onclick="toggleAccordion(this)">
-                <h3 class="text-sm font-semibold uppercase tracking-wider text-cyan-400 flex items-center space-x-2">
-                  <i class="fas fa-fire"></i>
-                  <span>3D FX</span>
-                </h3>
-                <i class="fas fa-chevron-down text-gray-500 transform transition-transform"></i>
-              </div>
-              <div class="accordion-content mt-2 grid grid-cols-1 sm:grid-cols-3 gap-2 p-2 hidden">
-                <button onclick="selectTag(this)" class="tag-button px-3 py-2 bg-gray-800 hover:bg-gray-700 border border-gray-700 rounded-lg text-sm text-left transition-all hover:shadow-md">
-                  3D FX SIMPL
-                </button>
-                <button onclick="selectTag(this)" class="tag-button px-3 py-2 bg-gray-800 hover:bg-gray-700 border border-gray-700 rounded-lg text-sm text-left transition-all hover:shadow-md">
-                  3D FX MED
-                </button>
-                <button onclick="selectTag(this)" class="tag-button px-3 py-2 bg-gray-800 hover:bg-gray-700 border border-gray-700 rounded-lg text-sm text-left transition-all hover:shadow-md">
-                  3D FX COMPLEX
-                </button>
-              </div>
-            </div>
-
-            <!-- PREVIS -->
-            <div class="tag-group" data-category="previs">
-              <div class="accordion-header flex justify-between items-center p-2 bg-gray-900/50 rounded-lg cursor-pointer" onclick="toggleAccordion(this)">
-                <h3 class="text-sm font-semibold uppercase tracking-wider text-cyan-400 flex items-center space-x-2">
-                  <i class="fas fa-video"></i>
-                  <span>PREVIS</span>
-                </h3>
-                <i class="fas fa-chevron-down text-gray-500 transform transition-transform"></i>
-              </div>
-              <div class="accordion-content mt-2 grid grid-cols-1 sm:grid-cols-3 gap-2 p-2 hidden">
-                <button onclick="selectTag(this)" class="tag-button px-3 py-2 bg-gray-800 hover:bg-gray-700 border border-gray-700 rounded-lg text-sm text-left transition-all hover:shadow-md">
-                  PREVIS SIMPL
-                </button>
-                <button onclick="selectTag(this)" class="tag-button px-3 py-2 bg-gray-800 hover:bg-gray-700 border border-gray-700 rounded-lg text-sm text-left transition-all hover:shadow-md">
-                  PREVIS MED
-                </button>
-                <button onclick="selectTag(this)" class="tag-button px-3 py-2 bg-gray-800 hover:bg-gray-700 border border-gray-700 rounded-lg text-sm text-left transition-all hover:shadow-md">
-                  PREVIS COMPLEX
-                </button>
-              </div>
-            </div>
+          <div id="tagging-accordions" class="space-y-4">
+            <!-- Tag groups will be dynamically generated here -->
           </div>
         </div>
 
@@ -672,6 +585,91 @@ A massive explosion rocks the downtown area. Cars flip through the air as debris
             </table>
           </div>
         </div>
+        
+        <!-- Manage Tags Tab -->
+        <div id="manage-tags-tab" class="tab-content p-4 hidden h-full">
+          <div class="tag-management-header">
+            <h3>Manage VFX Tags</h3>
+            <p id="tag-count">0 tags</p>
+          </div>
+          
+          <p class="text-sm text-gray-400 mb-4">
+            Edit existing tags or add new ones. Changes will be reflected in the tagging tab after saving.
+          </p>
+          
+          <table class="tag-management-table">
+            <thead>
+              <tr>
+                <th>VFX Tag</th>
+                <th>Group</th>
+                <th class="action-cell">Action</th>
+              </tr>
+            </thead>
+            <tbody id="tag-management-body">
+              <!-- Tag rows will be added here -->
+            </tbody>
+          </table>
+          
+          <div class="tag-management-actions">
+            <button onclick="addNewTagRow()" class="add-btn">
+              <i class="fas fa-plus mr-2"></i>Add Tag
+            </button>
+            <button onclick="saveTagChanges()" class="save-btn">
+              <i class="fas fa-save mr-2"></i>Update Tags
+            </button>
+            <button onclick="resetTagChanges()" class="reset-btn">
+              <i class="fas fa-undo mr-2"></i>Reset
+            </button>
+          </div>
+          
+          <div class="mt-6">
+            <h4 class="text-sm font-medium text-cyan-400 mb-2">Tag Groups</h4>
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-2">
+              <div class="bg-gray-900/50 p-3 rounded-lg">
+                <div class="flex items-center mb-2">
+                  <i class="fas fa-layer-group text-cyan-400 mr-2"></i>
+                  <span class="text-sm font-medium">2D COMP & DMP</span>
+                </div>
+                <p class="text-xs text-gray-400">Compositing & Digital Matte Painting</p>
+              </div>
+              <div class="bg-gray-900/50 p-3 rounded-lg">
+                <div class="flex items-center mb-2">
+                  <i class="fas fa-users text-purple-400 mr-2"></i>
+                  <span class="text-sm font-medium">CROWDS</span>
+                </div>
+                <p class="text-xs text-gray-400">Crowd simulation and duplication</p>
+              </div>
+              <div class="bg-gray-900/50 p-3 rounded-lg">
+                <div class="flex items-center mb-2">
+                  <i class="fas fa-shapes text-green-400 mr-2"></i>
+                  <span class="text-sm font-medium">2D OTHER</span>
+                </div>
+                <p class="text-xs text-gray-400">Miscellaneous 2D effects</p>
+              </div>
+              <div class="bg-gray-900/50 p-3 rounded-lg">
+                <div class="flex items-center mb-2">
+                  <i class="fas fa-cube text-yellow-400 mr-2"></i>
+                  <span class="text-sm font-medium">3D FULL CGI</span>
+                </div>
+                <p class="text-xs text-gray-400">Full computer-generated imagery</p>
+              </div>
+              <div class="bg-gray-900/50 p-3 rounded-lg">
+                <div class="flex items-center mb-2">
+                  <i class="fas fa-mountain text-red-400 mr-2"></i>
+                  <span class="text-sm font-medium">3D ENVIRO</span>
+                </div>
+                <p class="text-xs text-gray-400">Environment creation</p>
+              </div>
+              <div class="bg-gray-900/50 p-3 rounded-lg">
+                <div class="flex items-center mb-2">
+                  <i class="fas fa-fire text-orange-400 mr-2"></i>
+                  <span class="text-sm font-medium">3D FX</span>
+                </div>
+                <p class="text-xs text-gray-400">Special effects simulation</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </main>
@@ -682,12 +680,68 @@ A massive explosion rocks the downtown area. Cars flip through the air as debris
     let selectedTag = null;
     let taggedShots = [];
     let fontSize = 12;
+    
+    // Tag groups with display names and icons
+    const tagGroups = [
+      { id: '2d-comp', name: '2D COMP & DMP', icon: 'fas fa-layer-group' },
+      { id: 'crowds', name: 'CROWDS', icon: 'fas fa-users' },
+      { id: '2d-other', name: '2D OTHER', icon: 'fas fa-shapes' },
+      { id: '3d-full-cgi', name: '3D FULL CGI', icon: 'fas fa-cube' },
+      { id: '3d-enviro', name: '3D ENVIRO', icon: 'fas fa-mountain' },
+      { id: '3d-object', name: '3D OBJECT', icon: 'fas fa-cube' },
+      { id: '3d-character', name: '3D CHARACTER', icon: 'fas fa-user-astronaut' },
+      { id: '3d-fx', name: '3D FX', icon: 'fas fa-fire' },
+      { id: 'previs', name: 'PREVIS', icon: 'fas fa-video' }
+    ];
+    
+    // Default VFX tags
+    let vfxTags = [
+      { tag: "2D COMP COMPLEX", group: "2d-comp" },
+      { tag: "2D COMP MED", group: "2d-comp" },
+      { tag: "2D COMP SIMPL", group: "2d-comp" },
+      { tag: "2D DMP COMPLEX", group: "2d-comp" },
+      { tag: "2D DMP MED", group: "2d-comp" },
+      { tag: "2D DMP SIMPL", group: "2d-comp" },
+      { tag: "2D CROWD DUPL COMPLEX", group: "crowds" },
+      { tag: "2D CROWD DUPL MED", group: "crowds" },
+      { tag: "2D CROWD DUPL SIMPL", group: "crowds" },
+      { tag: "3D CROWDS SIMPL", group: "crowds" },
+      { tag: "3D CROWDS MED", group: "crowds" },
+      { tag: "3D CROWDS COMPLEX", group: "crowds" },
+      { tag: "2D BLOOD/MUZZLE FLASH/BULLET HIT", group: "2d-other" },
+      { tag: "2D FACE REPL", group: "2d-other" },
+      { tag: "2D FILTER", group: "2d-other" },
+      { tag: "2D FX STOCK FOOTAGE", group: "2d-other" },
+      { tag: "2D HUD OVERLAY", group: "2d-other" },
+      { tag: "2D SCREEN REPLACEMENT", group: "2d-other" },
+      { tag: "TITLE CARD", group: "2d-other" },
+      { tag: "3D FULL CGI SIMPL", group: "3d-full-cgi" },
+      { tag: "3D FULL CGI MED", group: "3d-full-cgi" },
+      { tag: "3D FULL CGI COMPLEX", group: "3d-full-cgi" },
+      { tag: "3D ENVIRO SIMPL", group: "3d-enviro" },
+      { tag: "3D ENVIRO MED", group: "3d-enviro" },
+      { tag: "3D ENVIRO COMPLEX", group: "3d-enviro" },
+      { tag: "3D OBJECT SIMPL", group: "3d-object" },
+      { tag: "3D OBJECT MED", group: "3d-object" },
+      { tag: "3D OBJECT COMPLEX", group: "3d-object" },
+      { tag: "3D CHARACTER SIMPL", group: "3d-character" },
+      { tag: "3D CHARACTER MED", group: "3d-character" },
+      { tag: "3D CHARACTER COMPLEX", group: "3d-character" },
+      { tag: "3D FX SIMPL", group: "3d-fx" },
+      { tag: "3D FX MED", group: "3d-fx" },
+      { tag: "3D FX COMPLEX", group: "3d-fx" },
+      { tag: "PREVIS SIMPL", group: "previs" },
+      { tag: "PREVIS MED", group: "previs" },
+      { tag: "PREVIS COMPLEX", group: "previs" }
+    ];
 
     // Initialize the app
     document.addEventListener('DOMContentLoaded', function() {
       updateFontSize(12);
       loadFromLocalStorage();
       updateTaggedCount();
+      renderTaggingTab();
+      renderTagManagementTable();
     });
 
     // Store the current text selection
@@ -695,7 +749,7 @@ A massive explosion rocks the downtown area. Cars flip through the air as debris
       const selection = window.getSelection();
       if (selection && selection.rangeCount > 0 && !selection.isCollapsed) {
         currentSelection = selection.getRangeAt(0);
-        
+                
         // Update the preview
         const preview = document.getElementById('selectedPreview');
         preview.textContent = currentSelection.toString();
@@ -714,7 +768,7 @@ A massive explosion rocks the downtown area. Cars flip through the air as debris
     function selectTag(button) {
       // Toggle active state
       button.classList.toggle('active');
-      
+             
       // Get all active tags
       selectedTag = Array.from(document.querySelectorAll('.tag-button.active'))
         .map(btn => btn.textContent.trim())
@@ -725,7 +779,7 @@ A massive explosion rocks the downtown area. Cars flip through the air as debris
     function tagVFX() {
       const activeTags = Array.from(document.querySelectorAll('.tag-button.active'))
         .map(btn => btn.textContent.trim());
-      
+             
       if (!currentSelection || activeTags.length === 0) {
         alert('Please select text in the script and choose at least one VFX tag.');
         return;
@@ -734,10 +788,10 @@ A massive explosion rocks the downtown area. Cars flip through the air as debris
       const scene = document.getElementById('sceneInput').value.trim() || 'SCN';
       const shot = document.getElementById('shotInput').value.trim() || '001';
       const comment = document.getElementById('commentBox').value.trim();
-      
+             
       // Get the selected text
       const selectedText = currentSelection.toString();
-      
+             
       // Create a span to highlight the tagged text
       const span = document.createElement('span');
       span.className = 'selected-text';
@@ -745,17 +799,17 @@ A massive explosion rocks the downtown area. Cars flip through the air as debris
       span.dataset.shot = shot;
       span.dataset.tag = activeTags.join(', ');
       span.dataset.comment = comment;
-      
+             
       // Replace the selected text with our span
       currentSelection.deleteContents();
       span.appendChild(document.createTextNode(selectedText));
       currentSelection.insertNode(span);
-      
+             
       // Check if we already have this scene/shot combination
       const existingShot = taggedShots.find(s => 
         s.scene === scene && s.shot === shot && s.text === selectedText
       );
-      
+             
       if (existingShot) {
         // Merge tags
         const existingTags = existingShot.tag.split(', ');
@@ -771,12 +825,12 @@ A massive explosion rocks the downtown area. Cars flip through the air as debris
           comment
         });
       }
-      
+             
       // Update UI
       updateTaggedCount();
       saveToLocalStorage();
       renderTaggedShots();
-      
+             
       // Clear selection
       clearSelection();
     }
@@ -795,18 +849,18 @@ A massive explosion rocks the downtown area. Cars flip through the air as debris
       document.querySelectorAll('.tab-content').forEach(tab => {
         tab.classList.add('hidden');
       });
-      
+             
       // Show selected tab
       document.getElementById(`${tabName}-tab`).classList.remove('hidden');
-      
+             
       // Update tab buttons
       document.querySelectorAll('.tab-button').forEach(btn => {
         btn.classList.remove('border-cyan-500', 'text-cyan-400');
         btn.classList.add('border-transparent');
       });
-      
+             
       document.getElementById(`${tabName}-tab-btn`).classList.add('border-cyan-500', 'text-cyan-400');
-      
+             
       // If switching to stats tab, update stats
       if (tabName === 'stats') {
         updateStats();
@@ -817,7 +871,7 @@ A massive explosion rocks the downtown area. Cars flip through the air as debris
     function toggleAccordion(header) {
       const content = header.nextElementSibling;
       const icon = header.querySelector('.fa-chevron-down');
-      
+             
       content.classList.toggle('hidden');
       icon.classList.toggle('rotate-180');
     }
@@ -825,11 +879,11 @@ A massive explosion rocks the downtown area. Cars flip through the air as debris
     // Filter tags based on search input
     function filterTags() {
       const searchTerm = document.getElementById('tagSearch').value.toLowerCase();
-      
+             
       document.querySelectorAll('.tag-group').forEach(group => {
         let hasMatches = false;
         const buttons = group.querySelectorAll('.tag-button');
-        
+                 
         buttons.forEach(button => {
           const tagText = button.textContent.toLowerCase();
           if (tagText.includes(searchTerm)) {
@@ -839,7 +893,7 @@ A massive explosion rocks the downtown area. Cars flip through the air as debris
             button.style.display = 'none';
           }
         });
-        
+                 
         // Show/hide entire group based on matches
         if (hasMatches || searchTerm === '') {
           group.style.display = 'block';
@@ -858,12 +912,12 @@ A massive explosion rocks the downtown area. Cars flip through the air as debris
     function renderTaggedShots() {
       const container = document.getElementById('taggedShotsList');
       container.innerHTML = '';
-      
+             
       if (taggedShots.length === 0) {
         container.innerHTML = '<p class="text-gray-500 italic text-center py-4">No tagged shots yet</p>';
         return;
       }
-      
+             
       taggedShots.forEach((shot, index) => {
         const shotElement = document.createElement('div');
         shotElement.className = 'bg-gray-900/50 rounded-lg p-3 border border-gray-700';
@@ -893,13 +947,13 @@ A massive explosion rocks the downtown area. Cars flip through the air as debris
       updateTaggedCount();
       saveToLocalStorage();
       renderTaggedShots();
-      
+             
       // Also remove the highlight from the script
       const spans = document.querySelectorAll('#scriptInput span.selected-text');
       spans.forEach(span => {
         if (span.textContent === shotToRemove.text && 
-            span.dataset.scene === shotToRemove.scene && 
-            span.dataset.shot === shotToRemove.shot) {
+             span.dataset.scene === shotToRemove.scene && 
+             span.dataset.shot === shotToRemove.shot) {
           const textNode = document.createTextNode(span.textContent);
           span.parentNode.replaceChild(textNode, span);
         }
@@ -913,7 +967,7 @@ A massive explosion rocks the downtown area. Cars flip through the air as debris
         updateTaggedCount();
         saveToLocalStorage();
         renderTaggedShots();
-        
+                 
         // Remove all highlights from the script
         const spans = document.querySelectorAll('#scriptInput span.selected-text');
         spans.forEach(span => {
@@ -928,15 +982,15 @@ A massive explosion rocks the downtown area. Cars flip through the air as debris
       // Group by VFX type
       const statsByType = {};
       const statsByComplexity = { simple: 0, medium: 0, complex: 0 };
-      
+             
       taggedShots.forEach(shot => {
         // Extract base type (before SIMPL/MED/COMPLEX)
         const baseType = shot.tag.replace(/\s(SIMPL|MED|COMPLEX)$/, '');
-        
+                 
         if (!statsByType[baseType]) {
           statsByType[baseType] = { simple: 0, medium: 0, complex: 0, total: 0 };
         }
-        
+                 
         // Count by complexity
         if (shot.tag.includes('SIMPL')) {
           statsByType[baseType].simple++;
@@ -948,14 +1002,14 @@ A massive explosion rocks the downtown area. Cars flip through the air as debris
           statsByType[baseType].complex++;
           statsByComplexity.complex++;
         }
-        
+                 
         statsByType[baseType].total++;
       });
-      
+             
       // Update stats table
       const tableBody = document.getElementById('statsTableBody');
       tableBody.innerHTML = '';
-      
+             
       for (const [type, counts] of Object.entries(statsByType)) {
         const row = document.createElement('tr');
         row.innerHTML = `
@@ -967,7 +1021,7 @@ A massive explosion rocks the downtown area. Cars flip through the air as debris
         `;
         tableBody.appendChild(row);
       }
-      
+             
       // Simple chart for VFX types
       const typeChart = document.getElementById('vfxTypeChart');
       typeChart.innerHTML = `
@@ -975,15 +1029,15 @@ A massive explosion rocks the downtown area. Cars flip through the air as debris
           ${Object.entries(statsByType).map(([type, counts]) => `
             <div class="flex-1 flex flex-col items-center">
               <div 
-                class="w-full bg-gradient-to-t from-cyan-500 to-blue-600 rounded-t-sm" 
-                style="height: ${(counts.total / Math.max(1, taggedShots.length)) * 100}%"
+                 class="w-full bg-gradient-to-t from-cyan-500 to-blue-600 rounded-t-sm" 
+                 style="height: ${(counts.total / Math.max(1, taggedShots.length)) * 100}%"
               ></div>
               <div class="text-xs text-gray-400 mt-1 truncate w-full text-center">${type.split(' ')[0]}</div>
             </div>
           `).join('')}
         </div>
       `;
-      
+             
       // Simple chart for complexity
       const complexityChart = document.getElementById('complexityChart');
       complexityChart.innerHTML = `
@@ -992,22 +1046,22 @@ A massive explosion rocks the downtown area. Cars flip through the air as debris
             <svg viewBox="0 0 36 36" class="circular-chart">
               <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
               <path 
-                class="circle-fill-1" 
-                stroke-dasharray="${statsByComplexity.simple}, 100" 
-                d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" 
-              />
+                 class="circle-fill-1" 
+                 stroke-dasharray="${statsByComplexity.simple}, 100" 
+                 d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" 
+               />
               <path 
-                class="circle-fill-2" 
-                stroke-dasharray="${statsByComplexity.medium}, 100" 
-                stroke-dashoffset="${-statsByComplexity.simple}" 
-                d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" 
-              />
+                 class="circle-fill-2" 
+                 stroke-dasharray="${statsByComplexity.medium}, 100" 
+                 stroke-dashoffset="${-statsByComplexity.simple}" 
+                 d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" 
+               />
               <path 
-                class="circle-fill-3" 
-                stroke-dasharray="${statsByComplexity.complex}, 100" 
-                stroke-dashoffset="${-(statsByComplexity.simple + statsByComplexity.medium)}" 
-                d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" 
-              />
+                 class="circle-fill-3" 
+                 stroke-dasharray="${statsByComplexity.complex}, 100" 
+                 stroke-dashoffset="${-(statsByComplexity.simple + statsByComplexity.medium)}" 
+                 d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" 
+               />
             </svg>
             <div class="absolute inset-0 flex items-center justify-center flex-col">
               <div class="text-2xl font-bold text-cyan-400">${taggedShots.length}</div>
@@ -1058,13 +1112,13 @@ A massive explosion rocks the downtown area. Cars flip through the air as debris
         alert('No tagged shots to export.');
         return;
       }
-      
+             
       let csv = 'Scene,Shot,VFX Type,Description,Notes\n';
-      
+             
       taggedShots.forEach(shot => {
         csv += `"${shot.scene}","${shot.shot}","${shot.tag.replace(/"/g, '""')}","${shot.text.replace(/"/g, '""')}","${shot.comment.replace(/"/g, '""')}"\n`;
       });
-      
+             
       const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
       const url = URL.createObjectURL(blob);
       const link = document.createElement('a');
@@ -1081,7 +1135,7 @@ A massive explosion rocks the downtown area. Cars flip through the air as debris
         alert('No tagged shots to export.');
         return;
       }
-      
+             
       const data = {
         metadata: {
           generatedAt: new Date().toISOString(),
@@ -1089,7 +1143,7 @@ A massive explosion rocks the downtown area. Cars flip through the air as debris
         },
         shots: taggedShots
       };
-      
+             
       const json = JSON.stringify(data, null, 2);
       const blob = new Blob([json], { type: 'application/json;charset=utf-8;' });
       const url = URL.createObjectURL(blob);
@@ -1106,7 +1160,8 @@ A massive explosion rocks the downtown area. Cars flip through the air as debris
       localStorage.setItem('vfxBidbotData', JSON.stringify({
         taggedShots,
         fontSize,
-        scriptContent: document.getElementById('scriptInput').innerHTML
+        scriptContent: document.getElementById('scriptInput').innerHTML,
+        vfxTags
       }));
     }
 
@@ -1117,13 +1172,141 @@ A massive explosion rocks the downtown area. Cars flip through the air as debris
         const data = JSON.parse(savedData);
         taggedShots = data.taggedShots || [];
         fontSize = data.fontSize || 12;
-        
+        vfxTags = data.vfxTags || vfxTags;
+                 
         if (data.scriptContent) {
           document.getElementById('scriptInput').innerHTML = data.scriptContent;
         }
-        
+                 
         updateFontSize(fontSize);
         renderTaggedShots();
+      }
+    }
+    
+    // Render tagging tab with accordions and tags
+    function renderTaggingTab() {
+      const container = document.getElementById('tagging-accordions');
+      container.innerHTML = '';
+      
+      // Group tags by their group
+      const tagsByGroup = {};
+      vfxTags.forEach(tag => {
+        if (!tagsByGroup[tag.group]) {
+          tagsByGroup[tag.group] = [];
+        }
+        tagsByGroup[tag.group].push(tag.tag);
+      });
+      
+      // Create accordions for each group
+      tagGroups.forEach(group => {
+        if (tagsByGroup[group.id] && tagsByGroup[group.id].length > 0) {
+          const groupElement = document.createElement('div');
+          groupElement.className = 'tag-group';
+          groupElement.dataset.category = group.id;
+          
+          groupElement.innerHTML = `
+            <div class="accordion-header flex justify-between items-center p-2 bg-gray-900/50 rounded-lg cursor-pointer" onclick="toggleAccordion(this)">
+              <h3 class="text-sm font-semibold uppercase tracking-wider text-cyan-400 flex items-center space-x-2">
+                <i class="${group.icon}"></i>
+                <span>${group.name}</span>
+              </h3>
+              <i class="fas fa-chevron-down text-gray-500 transform transition-transform duration-200"></i>
+            </div>
+            <div class="accordion-content mt-2 grid grid-cols-1 sm:grid-cols-2 gap-2 p-2 hidden">
+              ${tagsByGroup[group.id].map(tag => 
+                `<button onclick="selectTag(this)" class="tag-button px-3 py-2 bg-gray-800 hover:bg-gray-700 border border-gray-700 rounded-lg text-sm text-left transition-all hover:shadow-md">
+                  ${tag}
+                </button>`
+              ).join('')}
+            </div>
+          `;
+          
+          container.appendChild(groupElement);
+        }
+      });
+    }
+    
+    // Render tag management table
+    function renderTagManagementTable() {
+      const container = document.getElementById('tag-management-body');
+      container.innerHTML = '';
+      
+      vfxTags.forEach((tag, index) => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>
+            <input type="text" value="${tag.tag}" class="tag-input" data-index="${index}">
+          </td>
+          <td>
+            <select class="tag-group-select" data-index="${index}">
+              ${tagGroups.map(group => 
+                `<option value="${group.id}" ${tag.group === group.id ? 'selected' : ''}>${group.name}</option>`
+              ).join('')}
+            </select>
+          </td>
+          <td class="action-cell">
+            <button onclick="removeTagRow(${index})">
+              <i class="fas fa-trash"></i>
+            </button>
+          </td>
+        `;
+        container.appendChild(row);
+      });
+      
+      document.getElementById('tag-count').textContent = `${vfxTags.length} tags`;
+    }
+    
+    // Add a new tag row
+    function addNewTagRow() {
+      vfxTags.push({ tag: "NEW TAG", group: "2d-comp" });
+      renderTagManagementTable();
+    }
+    
+    // Remove a tag row
+    function removeTagRow(index) {
+      if (confirm('Are you sure you want to remove this tag?')) {
+        vfxTags.splice(index, 1);
+        renderTagManagementTable();
+      }
+    }
+    
+    // Save tag changes
+    function saveTagChanges() {
+      // Update tags from inputs
+      document.querySelectorAll('.tag-input').forEach(input => {
+        const index = input.dataset.index;
+        vfxTags[index].tag = input.value;
+      });
+      
+      // Update groups from selects
+      document.querySelectorAll('.tag-group-select').forEach(select => {
+        const index = select.dataset.index;
+        vfxTags[index].group = select.value;
+      });
+      
+      // Save and update UI
+      saveToLocalStorage();
+      renderTaggingTab();
+      
+      // Show success message
+      const successMsg = document.createElement('div');
+      successMsg.className = 'bg-green-600/20 text-green-400 p-2 rounded-lg text-sm mb-4';
+      successMsg.innerHTML = '<i class="fas fa-check-circle mr-2"></i> Tags updated successfully!';
+      
+      const container = document.getElementById('manage-tags-tab');
+      container.insertBefore(successMsg, container.firstChild);
+      
+      // Remove message after 3 seconds
+      setTimeout(() => {
+        successMsg.remove();
+      }, 3000);
+    }
+    
+    // Reset tag changes
+    function resetTagChanges() {
+      if (confirm('Are you sure you want to reset all changes? This will revert to the last saved tags.')) {
+        loadFromLocalStorage();
+        renderTagManagementTable();
       }
     }
   </script>
