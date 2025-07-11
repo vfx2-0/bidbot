@@ -28,7 +28,7 @@
     ::-webkit-scrollbar-thumb:hover {
       background: rgba(0, 212, 255, 0.7);
     }
-        
+    
     /* Custom styles that Tailwind can't handle easily */
     
     body {
@@ -140,6 +140,48 @@
       border-color: rgba(0, 212, 255, 0.5);
       color: #00d4ff;
     }
+
+    /* Font size slider styles */
+    .font-size-control {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 8px;
+      background: rgba(0, 0, 0, 0.2);
+      border-radius: 20px;
+    }
+
+    .font-size-slider {
+      -webkit-appearance: none;
+      width: 100px;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 2px;
+      outline: none;
+    }
+
+    .font-size-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: #00d4ff;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .font-size-slider::-webkit-slider-thumb:hover {
+      transform: scale(1.1);
+      background: #00a8d4;
+    }
+
+    .font-size-value {
+      min-width: 30px;
+      text-align: center;
+      font-size: 0.8rem;
+      color: #00d4ff;
+    }
   </style>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -167,18 +209,31 @@
   <main class="container mx-auto px-3 py-4 grid main-grid grid-cols-1 lg:grid-cols-[70%_30%] gap-4 min-h-[calc(100vh-8rem)]">
     <!-- Script Panel -->
     <div class="bg-gray-800/50 backdrop-blur-sm rounded-xl border border-gray-700 overflow-hidden flex flex-col h-full">
-      <div class="bg-gray-900/50 p-2 border-b border-gray-700">
+      <div class="bg-gray-900/50 p-2 border-b border-gray-700 flex justify-between items-center">
         <h2 class="text-base font-semibold flex items-center space-x-1">
           <i class="fas fa-scroll text-cyan-400"></i>
           <span>Script (Paste here)</span>
         </h2>
+        <div class="font-size-control">
+          <i class="fas fa-font text-gray-400 text-sm"></i>
+          <input 
+            type="range" 
+            min="8" 
+            max="24" 
+            value="12" 
+            class="font-size-slider" 
+            id="fontSizeSlider"
+            oninput="updateFontSize(this.value)"
+          >
+          <span class="font-size-value" id="fontSizeValue">12px</span>
+        </div>
       </div>
       <div 
         id="scriptInput" 
         contenteditable="true"
         onmouseup="storeSelection()"
         onkeyup="storeSelection()"
-        class="flex-1 p-3 bg-gradient-to-b from-gray-100 to-gray-200 text-gray-900 font-mono overflow-auto focus:outline-none focus:ring-2 focus:ring-cyan-500/50 rounded-b-lg text-xs"
+        class="flex-1 p-3 bg-gradient-to-b from-gray-100 to-gray-200 text-gray-900 font-mono overflow-auto focus:outline-none focus:ring-2 focus:ring-cyan-500/50 rounded-b-lg"
       >INT. LAB – DAY
 A CG alien runs across the lab, knocking over glowing vials. The scientist yells and dives under a table as a monitor explodes.
 
@@ -450,621 +505,5 @@ A massive explosion rocks the downtown area. Cars flip through the air as debris
             <div class="tag-group" data-category="3d-object">
               <div class="accordion-header flex justify-between items-center p-2 bg-gray-900/50 rounded-lg cursor-pointer" onclick="toggleAccordion(this)">
                 <h3 class="text-sm font-semibold uppercase tracking-wider text-cyan-400 flex items-center space-x-2">
-                  <i class="fas fa-cubes"></i>
-                  <span>3D OBJECT</span>
-                </h3>
-                <i class="fas fa-chevron-down text-gray-500 transform transition-transform"></i>
-              </div>
-              <div class="accordion-content mt-2 grid grid-cols-1 sm:grid-cols-3 gap-2 p-2 hidden">
-                <button onclick="selectTag(this)" class="tag-button px-3 py-2 bg-gray-800 hover:bg-gray-700 border border-gray-700 rounded-lg text-sm text-left transition-all hover:shadow-md">
-                  3D OBJECT INTEGRATION SIMPL
-                </button>
-                <button onclick="selectTag(this)" class="tag-button px-3 py-2 bg-gray-800 hover:bg-gray-700 border border-gray-700 rounded-lg text-sm text-left transition-all hover:shadow-md">
-                  3D OBJECT INTEGRATION MED
-                </button>
-                <button onclick="selectTag(this)" class="tag-button px-3 py-2 bg-gray-800 hover:bg-gray-700 border border-gray-700 rounded-lg text-sm text-left transition-all hover:shadow-md">
-                  3D OBJECT INTEGRATION COMPLEX
-                </button>
-              </div>
-            </div>
-
-            <!-- 3D VEHICLE -->
-            <div class="tag-group" data-category="3d-vehicle">
-              <div class="accordion-header flex justify-between items-center p-2 bg-gray-900/50 rounded-lg cursor-pointer" onclick="toggleAccordion(this)">
-                <h3 class="text-sm font-semibold uppercase tracking-wider text-cyan-400 flex items-center space-x-2">
-                  <i class="fas fa-car"></i>
-                  <span>3D VEHICLE</span>
-                </h3>
-                <i class="fas fa-chevron-down text-gray-500 transform transition-transform"></i>
-              </div>
-              <div class="accordion-content mt-2 grid grid-cols-1 sm:grid-cols-3 gap-2 p-2 hidden">
-                <button onclick="selectTag(this)" class="tag-button px-3 py-2 bg-gray-800 hover:bg-gray-700 border border-gray-700 rounded-lg text-sm text-left transition-all hover:shadow-md">
-                  3D VEHICLE INTEGRATION SIMPL
-                </button>
-                <button onclick="selectTag(this)" class="tag-button px-3 py-2 bg-gray-800 hover:bg-gray-700 border border-gray-700 rounded-lg text-sm text-left transition-all hover:shadow-md">
-                  3D VEHICLE INTEGRATION MED
-                </button>
-                <button onclick="selectTag(this)" class="tag-button px-3 py-2 bg-gray-800 hover:bg-gray-700 border border-gray-700 rounded-lg text-sm text-left transition-all hover:shadow-md">
-                  3D VEHICLE INTEGRATION COMPLEX
-                </button>
-              </div>
-            </div>
-
-            <!-- 3D CHARACTER -->
-            <div class="tag-group" data-category="3d-character">
-              <div class="accordion-header flex justify-between items-center p-2 bg-gray-900/50 rounded-lg cursor-pointer" onclick="toggleAccordion(this)">
-                <h3 class="text-sm font-semibold uppercase tracking-wider text-cyan-400 flex items-center space-x-2">
-                  <i class="fas fa-user-astronaut"></i>
-                  <span>3D CHARACTER</span>
-                </h3>
-                <i class="fas fa-chevron-down text-gray-500 transform transition-transform"></i>
-              </div>
-              <div class="accordion-content mt-2 grid grid-cols-1 sm:grid-cols-3 gap-2 p-2 hidden">
-                <button onclick="selectTag(this)" class="tag-button px-3 py-2 bg-gray-800 hover:bg-gray-700 border border-gray-700 rounded-lg text-sm text-left transition-all hover:shadow-md">
-                  3D CHARACTER INTEGRATION SIMPL
-                </button>
-                <button onclick="selectTag(this)" class="tag-button px-3 py-2 bg-gray-800 hover:bg-gray-700 border border-gray-700 rounded-lg text-sm text-left transition-all hover:shadow-md">
-                  3D CHARACTER INTEGRATION MED
-                </button>
-                <button onclick="selectTag(this)" class="tag-button px-3 py-2 bg-gray-800 hover:bg-gray-700 border border-gray-700 rounded-lg text-sm text-left transition-all hover:shadow-md">
-                  3D CHARACTER INTEGRATION COMPLEX
-                </button>
-              </div>
-            </div>
-
-            <!-- 3D FX -->
-            <div class="tag-group" data-category="3d-fx">
-              <div class="accordion-header flex justify-between items-center p-2 bg-gray-900/50 rounded-lg cursor-pointer" onclick="toggleAccordion(this)">
-                <h3 class="text-sm font-semibold uppercase tracking-wider text-cyan-400 flex items-center space-x-2">
-                  <i class="fas fa-fire"></i>
-                  <span>3D FX</span>
-                </h3>
-                <i class="fas fa-chevron-down text-gray-500 transform transition-transform"></i>
-              </div>
-              <div class="accordion-content mt-2 grid grid-cols-1 sm:grid-cols-3 gap-2 p-2 hidden">
-                <button onclick="selectTag(this)" class="tag-button px-3 py-2 bg-gray-800 hover:bg-gray-700 border border-gray-700 rounded-lg text-sm text-left transition-all hover:shadow-md">
-                  3D FX SIMPL
-                </button>
-                <button onclick="selectTag(this)" class="tag-button px-3 py-2 bg-gray-800 hover:bg-gray-700 border border-gray-700 rounded-lg text-sm text-left transition-all hover:shadow-md">
-                  3D FX MED
-                </button>
-                <button onclick="selectTag(this)" class="tag-button px-3 py-2 bg-gray-800 hover:bg-gray-700 border border-gray-700 rounded-lg text-sm text-left transition-all hover:shadow-md">
-                  3D FX COMPLEX
-                </button>
-              </div>
-            </div>
-
-            <!-- PREVIS -->
-            <div class="tag-group" data-category="previs">
-              <div class="accordion-header flex justify-between items-center p-2 bg-gray-900/50 rounded-lg cursor-pointer" onclick="toggleAccordion(this)">
-                <h3 class="text-sm font-semibold uppercase tracking-wider text-cyan-400 flex items-center space-x-2">
-                  <i class="fas fa-video"></i>
-                  <span>PREVIS</span>
-                </h3>
-                <i class="fas fa-chevron-down text-gray-500 transform transition-transform"></i>
-              </div>
-              <div class="accordion-content mt-2 grid grid-cols-1 sm:grid-cols-3 gap-2 p-2 hidden">
-                <button onclick="selectTag(this)" class="tag-button px-3 py-2 bg-gray-800 hover:bg-gray-700 border border-gray-700 rounded-lg text-sm text-left transition-all hover:shadow-md">
-                  PREVIS SIMPL
-                </button>
-                <button onclick="selectTag(this)" class="tag-button px-3 py-2 bg-gray-800 hover:bg-gray-700 border border-gray-700 rounded-lg text-sm text-left transition-all hover:shadow-md">
-                  PREVIS MED
-                </button>
-                <button onclick="selectTag(this)" class="tag-button px-3 py-2 bg-gray-800 hover:bg-gray-700 border border-gray-700 rounded-lg text-sm text-left transition-all hover:shadow-md">
-                  PREVIS COMPLEX
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- History Tab -->
-        <div id="history-tab" class="tab-content p-4 hidden h-full">
-          <div class="flex justify-between items-center mb-4">
-            <h3 class="text-sm font-semibold text-cyan-400">Tagged Shots History</h3>
-            <button onclick="clearHistory()" class="text-xs text-red-400 hover:text-red-300 flex items-center space-x-1">
-              <i class="fas fa-trash-alt"></i>
-              <span>Clear All</span>
-            </button>
-          </div>
-          <div id="taggedShotsList" class="overflow-auto max-h-[calc(100%-2rem)]">
-            <!-- Tagged shots will appear here -->
-            <div class="text-center text-gray-500 italic py-8">No tagged shots yet</div>
-          </div>
-        </div>
-
-        <!-- Stats Tab -->
-        <div id="stats-tab" class="tab-content p-4 hidden h-full">
-          <h3 class="text-sm font-semibold text-cyan-400 mb-4">VFX Statistics</h3>
-          <div class="bg-gray-900/50 rounded-lg p-4 mb-4">
-            <div class="grid grid-cols-3 gap-4 text-center">
-              <div>
-                <div class="text-2xl font-bold text-cyan-400" id="totalShots">0</div>
-                <div class="text-xs text-gray-400">Total Shots</div>
-              </div>
-              <div>
-                <div class="text-2xl font-bold text-purple-400" id="totalTags">0</div>
-                <div class="text-xs text-gray-400">Total Tags</div>
-              </div>
-              <div>
-                <div class="text-2xl font-bold text-green-400" id="uniqueTags">0</div>
-                <div class="text-xs text-gray-400">Unique Tags</div>
-              </div>
-            </div>
-          </div>
-          
-          <div class="bg-gray-900/50 rounded-lg p-4">
-            <h4 class="text-xs font-semibold text-gray-400 mb-2">Tag Distribution</h4>
-            <div id="tagDistributionChart" class="h-48">
-              <!-- Chart will be rendered here -->
-              <div class="text-center text-gray-500 italic py-8">No data available</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </main>
-
-  <script>
-    // Global variables
-    let selectedText = '';
-    let selectedTags = [];
-    let taggedShots = [];
-    
-    // Initialize the app
-    document.addEventListener('DOMContentLoaded', function() {
-      // Load any saved data
-      loadFromLocalStorage();
-      updateTaggedCount();
-      updateStats();
-    });
-    
-    // Store the current text selection
-    function storeSelection() {
-      const selection = window.getSelection();
-      if (!selection || selection.toString().trim() === '') {
-        document.getElementById('selectedPreview').textContent = '(Select text in the script to preview it here)';
-        return;
-      }
-      
-      selectedText = selection.toString();
-      document.getElementById('selectedPreview').textContent = selectedText;
-    }
-    
-    // Select a VFX tag (can select multiple)
-    function selectTag(button) {
-      // Toggle active state
-      button.classList.toggle('active');
-      
-      // Update selected tags array
-      updateSelectedTags();
-    }
-    
-    // Update the array of selected tags
-    function updateSelectedTags() {
-      selectedTags = [];
-      document.querySelectorAll('.tag-button.active').forEach(btn => {
-        selectedTags.push(btn.textContent.trim());
-      });
-    }
-    
-    // Tag the selected text with VFX information
-    function tagVFX() {
-      if (!selectedText || selectedText.trim() === '') {
-        alert('Please select some text in the script first');
-        return;
-      }
-      
-      if (selectedTags.length === 0) {
-        alert('Please select at least one VFX tag');
-        return;
-      }
-      
-      const scene = document.getElementById('sceneInput').value.trim().toUpperCase() || 'SCN';
-      const shot = document.getElementById('shotInput').value.trim() || '001';
-      const comment = document.getElementById('commentBox').value.trim();
-      
-      // Create a single tagged shot with all selected tags
-      const taggedShot = {
-        id: Date.now() + Math.floor(Math.random() * 1000), // More unique ID
-        scene,
-        shot,
-        text: selectedText,
-        tags: [...selectedTags], // Store all selected tags as an array
-        comment,
-        timestamp: new Date().toISOString()
-      };
-      taggedShots.push(taggedShot);
-      
-      // Save to local storage
-      saveToLocalStorage();
-      
-      // Update UI
-      updateTaggedCount();
-      updateStats();
-      
-      if (document.getElementById('history-tab-btn').classList.contains('border-cyan-500')) {
-        renderTaggedShots();
-      }
-      
-      // Reset form
-      clearSelection();
-      
-      // Show success message
-      showToast('VFX tagged successfully!');
-    }
-    
-    // Clear the current selection
-    function clearSelection() {
-      selectedText = '';
-      document.getElementById('selectedPreview').textContent = '(Select text in the script to preview it here)';
-      document.getElementById('commentBox').value = '';
-      
-      // Clear active tags
-      document.querySelectorAll('.tag-button').forEach(btn => {
-        btn.classList.remove('active');
-      });
-      selectedTags = [];
-    }
-    
-    // Switch between tabs
-    function switchTab(tabName) {
-      // Hide all tab contents
-      document.querySelectorAll('.tab-content').forEach(tab => {
-        tab.classList.add('hidden');
-      });
-      
-      // Show selected tab content
-      document.getElementById(`${tabName}-tab`).classList.remove('hidden');
-      
-      // Update tab buttons
-      document.querySelectorAll('.tab-button').forEach(btn => {
-        btn.classList.remove('border-cyan-500', 'text-cyan-400');
-        btn.classList.add('border-transparent');
-      });
-      
-      document.getElementById(`${tabName}-tab-btn`).classList.add('border-cyan-500', 'text-cyan-400');
-      document.getElementById(`${tabName}-tab-btn`).classList.remove('border-transparent');
-      
-      // Render content if needed
-      if (tabName === 'history') {
-        renderTaggedShots();
-      } else if (tabName === 'stats') {
-        updateStats();
-      }
-    }
-    
-    // Filter tags based on search input
-    function filterTags() {
-      const searchTerm = document.getElementById('tagSearch').value.toLowerCase();
-      
-      document.querySelectorAll('.tag-group').forEach(group => {
-        const category = group.getAttribute('data-category');
-        let hasMatches = false;
-        
-        group.querySelectorAll('.tag-button').forEach(button => {
-          const tagText = button.textContent.toLowerCase();
-          if (tagText.includes(searchTerm)) {
-            button.classList.remove('hidden');
-            hasMatches = true;
-          } else {
-            button.classList.add('hidden');
-          }
-        });
-        
-        // Show/hide the entire group based on matches
-        if (hasMatches || searchTerm === '') {
-          group.classList.remove('hidden');
-        } else {
-          group.classList.add('hidden');
-        }
-      });
-    }
-    
-    // Toggle accordion sections
-    function toggleAccordion(header) {
-      const content = header.nextElementSibling;
-      const icon = header.querySelector('i.fa-chevron-down');
-      
-      if (content.classList.contains('hidden')) {
-        content.classList.remove('hidden');
-        icon.classList.add('rotate-180');
-      } else {
-        content.classList.add('hidden');
-        icon.classList.remove('rotate-180');
-      }
-    }
-    
-    // Render tagged shots in history tab
-    function renderTaggedShots() {
-      const container = document.getElementById('taggedShotsList');
-      
-      if (taggedShots.length === 0) {
-        container.innerHTML = '<div class="text-center text-gray-500 italic py-8">No tagged shots yet</div>';
-        return;
-      }
-      
-      // Sort by scene and shot
-      taggedShots.sort((a, b) => {
-        if (a.scene === b.scene) {
-          return a.shot.localeCompare(b.shot);
-        }
-        return a.scene.localeCompare(b.scene);
-      });
-      
-      let html = '';
-      
-      // Group by scene
-      const scenes = {};
-      taggedShots.forEach(shot => {
-        if (!scenes[shot.scene]) {
-          scenes[shot.scene] = [];
-        }
-        scenes[shot.scene].push(shot);
-      });
-      
-      // Generate HTML for each scene
-      for (const scene in scenes) {
-        html += `
-          <div class="mb-4">
-            <div class="flex items-center justify-between bg-gray-900/70 px-3 py-2 rounded-t-lg">
-              <span class="font-semibold text-cyan-400">${scene}</span>
-              <span class="text-xs text-gray-400">${scenes[scene].length} shot${scenes[scene].length !== 1 ? 's' : ''}</span>
-            </div>
-            <div class="border border-gray-700 border-t-0 rounded-b-lg overflow-hidden">
-        `;
-        
-        scenes[scene].forEach(shot => {
-          const date = new Date(shot.timestamp);
-          const timeString = date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-          
-          html += `
-            <div class="border-b border-gray-700 last:border-b-0 group">
-              <div class="flex items-start justify-between p-3 hover:bg-gray-900/50">
-                <div class="flex-1">
-                  <div class="flex items-center space-x-2 mb-1">
-                    <span class="text-xs font-mono bg-gray-800 px-2 py-0.5 rounded">${shot.shot}</span>
-                    <div class="flex flex-wrap gap-1">
-                      ${shot.tags.map(tag => 
-                        `<span class="text-xs font-medium text-purple-400">${tag}</span>`
-                      ).join(', ')}
-                    </div>
-                  </div>
-                  <div class="text-xs text-gray-300 mb-1">${shot.text}</div>
-                  ${shot.comment ? `<div class="text-xs text-gray-500 italic">${shot.comment}</div>` : ''}
-                </div>
-                <div class="flex items-center space-x-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                  <button onclick="editTaggedShot(${shot.id})" class="text-xs text-gray-400 hover:text-cyan-400">
-                    <i class="fas fa-edit"></i>
-                  </button>
-                  <button onclick="deleteTaggedShot(${shot.id})" class="text-xs text-gray-400 hover:text-red-400">
-                    <i class="fas fa-trash-alt"></i>
-                  </button>
-                </div>
-              </div>
-            </div>
-          `;
-        });
-        
-        html += `</div></div>`;
-      }
-      
-      container.innerHTML = html;
-    }
-    
-    // Delete a tagged shot
-    function deleteTaggedShot(id) {
-      if (confirm('Are you sure you want to delete this tagged shot?')) {
-        const initialLength = taggedShots.length;
-        taggedShots = taggedShots.filter(shot => shot.id !== id);
-        
-        if (taggedShots.length < initialLength) {
-          saveToLocalStorage();
-          updateTaggedCount();
-          updateStats();
-          renderTaggedShots();
-          showToast('Tagged shot deleted');
-        }
-      }
-    }
-    
-    // Edit a tagged shot
-    function editTaggedShot(id) {
-      const shot = taggedShots.find(s => s.id === id);
-      if (!shot) return;
-      
-      // Fill the form with the shot data
-      document.getElementById('sceneInput').value = shot.scene;
-      document.getElementById('shotInput').value = shot.shot;
-      document.getElementById('commentBox').value = shot.comment || '';
-      selectedText = shot.text;
-      document.getElementById('selectedPreview').textContent = shot.text;
-      
-      // Find and select the tag button
-      document.querySelectorAll('.tag-button').forEach(btn => {
-        btn.classList.remove('active');
-        if (btn.textContent.trim() === shot.tag) {
-          btn.classList.add('active');
-        }
-      });
-      updateSelectedTags();
-      
-      // Scroll to the tagging tab
-      switchTab('tagging');
-      document.getElementById('scriptInput').scrollIntoView({ behavior: 'smooth' });
-      
-      showToast('Editing tagged shot...');
-    }
-    
-    // Clear all history
-    function clearHistory() {
-      if (taggedShots.length === 0) return;
-      
-      if (confirm('Are you sure you want to clear all tagged shots? This cannot be undone.')) {
-        taggedShots = [];
-        saveToLocalStorage();
-        updateTaggedCount();
-        updateStats();
-        renderTaggedShots();
-        showToast('All tagged shots cleared');
-      }
-    }
-    
-    // Update the tagged shots counter
-    function updateTaggedCount() {
-      document.getElementById('taggedCount').textContent = taggedShots.length;
-    }
-    
-    // Update statistics
-    function updateStats() {
-      document.getElementById('totalShots').textContent = taggedShots.length;
-      
-      // Count total tags (sum of all tags across all shots)
-      const totalTags = taggedShots.reduce((sum, shot) => sum + shot.tags.length, 0);
-      document.getElementById('totalTags').textContent = totalTags;
-      
-      // Count unique tags
-      const allTags = taggedShots.flatMap(shot => shot.tags);
-      const uniqueTags = new Set(allTags).size;
-      document.getElementById('uniqueTags').textContent = uniqueTags;
-      
-      // Update tag distribution chart (simplified)
-      updateTagDistributionChart();
-    }
-    
-    // Update tag distribution chart
-    function updateTagDistributionChart() {
-      const container = document.getElementById('tagDistributionChart');
-      
-      if (taggedShots.length === 0) {
-        container.innerHTML = '<div class="text-center text-gray-500 italic py-8">No data available</div>';
-        return;
-      }
-      
-      // Count tags by category
-      const tagCounts = {};
-      taggedShots.forEach(shot => {
-        shot.tags.forEach(tag => {
-          if (!tagCounts[tag]) {
-            tagCounts[tag] = 0;
-          }
-          tagCounts[tag]++;
-        });
-      });
-      
-      // Sort by count (descending)
-      const sortedTags = Object.keys(tagCounts).sort((a, b) => tagCounts[b] - tagCounts[a]);
-      
-      // Create a simple bar chart with divs
-      let html = '<div class="space-y-2">';
-      
-      sortedTags.forEach(tag => {
-        const count = tagCounts[tag];
-        const percentage = (count / taggedShots.length) * 100;
-        
-        html += `
-          <div>
-            <div class="flex justify-between text-xs mb-1">
-              <span class="truncate max-w-[120px]">${tag}</span>
-              <span class="text-gray-400">${count}</span>
-            </div>
-            <div class="w-full bg-gray-800 rounded-full h-1.5">
-              <div class="bg-gradient-to-r from-cyan-500 to-blue-600 h-1.5 rounded-full" style="width: ${percentage}%"></div>
-            </div>
-          </div>
-        `;
-      });
-      
-      html += '</div>';
-      container.innerHTML = html;
-    }
-    
-    // Export to CSV
-    function exportCSV() {
-      if (taggedShots.length === 0) {
-        alert('No tagged shots to export');
-        return;
-      }
-      
-      let csv = 'Scene,Shot,VFX Tag,Script Line,VFX Notes\n';
-      
-      taggedShots.forEach(shot => {
-        // Preserve leading zeros by treating shot as string
-        const shotNumber = shot.shot.toString().padStart(shot.shot.length, '0');
-        csv += `"${shot.scene}","${shotNumber}","${shot.tags.join('; ')}","${shot.text.replace(/"/g, '""')}","${shot.comment ? shot.comment.replace(/"/g, '""') : ''}"\n`;
-      });
-      
-      const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
-      const url = URL.createObjectURL(blob);
-      const link = document.createElement('a');
-      link.setAttribute('href', url);
-      link.setAttribute('download', `vfx_tags_${new Date().toISOString().slice(0, 10)}.csv`);
-      link.style.visibility = 'hidden';
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-      
-      showToast('CSV exported successfully');
-    }
-    
-    // Export to JSON
-    function exportJSON() {
-      if (taggedShots.length === 0) {
-        alert('No tagged shots to export');
-        return;
-      }
-      
-      const data = {
-        timestamp: new Date().toISOString(),
-        count: taggedShots.length,
-        shots: taggedShots
-      };
-      
-      const json = JSON.stringify(data, null, 2);
-      const blob = new Blob([json], { type: 'application/json;charset=utf-8;' });
-      const url = URL.createObjectURL(blob);
-      const link = document.createElement('a');
-      link.setAttribute('href', url);
-      link.setAttribute('download', `vfx_tags_${new Date().toISOString().slice(0, 10)}.json`);
-      link.style.visibility = 'hidden';
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-      
-      showToast('JSON exported successfully');
-    }
-    
-    // Save to local storage
-    function saveToLocalStorage() {
-      localStorage.setItem('vfxTaggedShots', JSON.stringify(taggedShots));
-    }
-    
-    // Load from local storage
-    function loadFromLocalStorage() {
-      const saved = localStorage.getItem('vfxTaggedShots');
-      if (saved) {
-        taggedShots = JSON.parse(saved);
-      }
-    }
-    
-    // Show a toast notification
-    function showToast(message) {
-      const toast = document.createElement('div');
-      toast.className = 'fixed bottom-4 right-4 bg-gray-800 border border-gray-700 text-gray-300 px-4 py-2 rounded-lg shadow-lg flex items-center space-x-2 animate-fade-in-up';
-      toast.innerHTML = `
-        <i class="fas fa-check-circle text-green-400"></i>
-        <span>${message}</span>
-      `;
-      
-      document.body.appendChild(toast);
-      
-      setTimeout(() => {
-        toast.classList.add('animate-fade-out');
-        setTimeout(() => {
-          document.body.removeChild(toast);
-        }, 300);
-      }, 3000);
-    }
-  </script>
-</body>
+                 
 </html>
