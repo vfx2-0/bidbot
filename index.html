@@ -47,8 +47,9 @@
     }
     
     .selected-text {
-      color: #00d4ff;
-      font-weight: 500;
+      text-decoration: underline;
+      background-color: #fffacd;
+      color: inherit;
     }
     
     #scriptInput {
@@ -248,7 +249,7 @@ A massive explosion rocks the downtown area. Cars flip through the air as debris
     </div>
 
     <!-- Controls Panel -->
-    <div class="bg-gray-800/50 backdrop-blur-sm rounded-xl border border-gray-700 overflow-hidden flex flex-col panel-height">
+    <div class="bg-gray-800/50 backdrop-blur-sm rounded-xl border border-gray-700 overflow-hidden flex flex-col panel-height sticky top-[4.5rem] self-start">
       <!-- Tab Navigation -->
       <div class="bg-gray-900/50 flex border-b border-gray-700">
         <button 
