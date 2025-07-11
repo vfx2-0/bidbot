@@ -365,11 +365,19 @@
         <h1 class="text-xl font-bold gradient-text">BIDBOT (A script breakdown tool for VFX - by Mathieu Vierendeel)</h1>
     </div>
     <div class="flex flex-wrap justify-center gap-2">
-      <button onclick="exportCSV()" class="flex items-center space-x-2 px-4 py-2 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white rounded-lg transition-all hover:shadow-lg hover:-translate-y-0.5">
+      <button onclick="saveProject()" class="flex items-center space-x-1 px-3 py-1.5 bg-gradient-to-r from-gray-700 to-blue-900 hover:from-gray-800 hover:to-blue-950 text-white rounded-lg transition-all hover:shadow-lg hover:-translate-y-0.5">
+        <i class="fas fa-save"></i>
+        <span>Save Project</span>
+      </button>
+      <button onclick="loadProject()" class="flex items-center space-x-1 px-3 py-1.5 bg-gradient-to-r from-gray-700 to-blue-900 hover:from-gray-800 hover:to-blue-950 text-white rounded-lg transition-all hover:shadow-lg hover:-translate-y-0.5">
+        <i class="fas fa-folder-open"></i>
+        <span>Load Project</span>
+      </button>
+      <button onclick="exportCSV()" class="flex items-center space-x-1 px-3 py-1.5 bg-gradient-to-r from-gray-700 to-blue-900 hover:from-gray-800 hover:to-blue-950 text-white rounded-lg transition-all hover:shadow-lg hover:-translate-y-0.5">
         <i class="fas fa-file-export"></i>
         <span>Export CSV</span>
       </button>
-      <button onclick="exportJSON()" class="flex items-center space-x-1 px-3 py-1.5 bg-gradient-to-r from-purple-500 to-indigo-600 hover:from-purple-600 hover:to-indigo-700 text-white rounded-lg transition-all hover:shadow-lg hover:-translate-y-0.5">
+      <button onclick="exportJSON()" class="flex items-center space-x-1 px-3 py-1.5 bg-gradient-to-r from-gray-700 to-blue-900 hover:from-gray-800 hover:to-blue-950 text-white rounded-lg transition-all hover:shadow-lg hover:-translate-y-0.5">
         <i class="fas fa-code"></i>
         <span>Export JSON</span>
       </button>
@@ -379,7 +387,7 @@
   <!-- Main Content -->
   <main class="container mx-auto px-3 py-4 grid main-grid grid-cols-1 lg:grid-cols-[70%_30%] gap-4 min-h-[calc(100vh-8rem)]">
     <!-- Script Panel -->
-    <div class="bg-gray-900/90 backdrop-blur-sm rounded-xl border border-gray-800 overflow-hidden flex flex-col h-full">
+    <div class="bg-gray-900/90 backdrop-blur-sm rounded-xl border border-gray-800 flex flex-col h-full overflow-y-auto">
       <div class="bg-gray-900/50 p-2 border-b border-gray-700 flex justify-between items-center">
         <h2 class="text-base font-semibold flex items-center space-x-1">
           <i class="fas fa-scroll text-cyan-400"></i>
@@ -404,7 +412,7 @@
         contenteditable="true"
         onmouseup="storeSelection()"
         onkeyup="storeSelection()"
-        class="flex-1 p-3 bg-[#fdfbfb] text-gray-800 font-mono overflow-auto focus:outline-none focus:ring-2 focus:ring-cyan-500/50 rounded-b-lg relative"
+        class="flex-1 p-3 bg-[#fdfbfb] text-gray-800 font-mono overflow-y-auto focus:outline-none focus:ring-2 focus:ring-cyan-500/50 rounded-b-lg relative"
       >
         <div class="coffee-stain coffee-stain-1"></div>
         <div class="coffee-stain coffee-stain-2"></div>
@@ -412,7 +420,7 @@
     </div>
 
     <!-- Controls Panel -->
-    <div class="bg-gray-900/80 backdrop-blur-sm rounded-xl border border-gray-800 overflow-hidden flex flex-col panel-height sticky top-[4.5rem] self-start">
+    <div class="bg-gray-900/80 backdrop-blur-sm rounded-xl border border-gray-800 flex flex-col panel-height sticky top-[4.5rem] self-start overflow-y-auto">
       <!-- Tab Navigation -->
       <div class="bg-gray-900/50 flex border-b border-gray-700">
         <button
@@ -451,7 +459,7 @@
       </div>
 
       <!-- Tab Contents -->
-      <div class="flex-1 overflow-auto">
+      <div class="flex-1 overflow-y-auto overflow-x-hidden">
         <!-- Tagging Tab -->
         <div id="tagging-tab" class="tab-content p-4 h-full">
           <div class="mb-4">
@@ -1163,6 +1171,132 @@
         scriptContent: document.getElementById('scriptInput').innerHTML,
         vfxTags
       }));
+    }
+
+    // Save current project with a name
+    function saveProject() {
+      const projectName = prompt('Enter a name for this project:');
+      if (!projectName) return;
+      
+      const projectData = {
+        name: projectName,
+        timestamp: new Date().toISOString(),
+        data: {
+          taggedShots,
+          fontSize,
+          scriptContent: document.getElementById('scriptInput').innerHTML,
+          vfxTags
+        }
+      };
+      
+      // Get existing projects or create new array
+      const projects = JSON.parse(localStorage.getItem('vfxBidbotProjects') || '[]');
+      
+      // Check if project with this name exists
+      const existingIndex = projects.findIndex(p => p.name === projectName);
+      if (existingIndex >= 0) {
+        if (!confirm(`A project named "${projectName}" already exists. Overwrite it?`)) {
+          return;
+        }
+        projects[existingIndex] = projectData;
+      } else {
+        projects.push(projectData);
+      }
+      
+      localStorage.setItem('vfxBidbotProjects', JSON.stringify(projects));
+      alert(`Project "${projectName}" saved successfully!`);
+    }
+
+    // Load a saved project
+    function loadProject() {
+      const projects = JSON.parse(localStorage.getItem('vfxBidbotProjects') || '[]');
+      if (projects.length === 0) {
+        alert('No saved projects found.');
+        return;
+      }
+      
+      // Create project selection dialog
+      const projectList = projects.map(p => 
+        `<div class="project-item p-3 border-b border-gray-700 hover:bg-gray-800/50 cursor-pointer flex justify-between items-center" onclick="loadSelectedProject('${p.name}')">
+          <div>
+            <div class="font-medium">${p.name}</div>
+            <div class="text-xs text-gray-400">${new Date(p.timestamp).toLocaleString()}</div>
+          </div>
+          <button onclick="event.stopPropagation(); deleteProject('${p.name}')" class="text-red-400 hover:text-red-500 p-1">
+            <i class="fas fa-trash"></i>
+          </button>
+        </div>`
+      ).join('');
+      
+      const dialog = document.createElement('div');
+      dialog.className = 'fixed inset-0 bg-black/70 flex items-center justify-center z-50 p-4';
+      dialog.innerHTML = `
+        <div class="bg-gray-900 rounded-lg border border-gray-700 w-full max-w-md max-h-[80vh] overflow-y-auto">
+          <div class="p-4 border-b border-gray-700 flex justify-between items-center">
+            <h3 class="text-lg font-semibold">Load Project</h3>
+            <button onclick="this.parentElement.parentElement.parentElement.remove()" class="text-gray-400 hover:text-white">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+          <div class="p-2">
+            ${projectList}
+          </div>
+          <div class="p-4 border-t border-gray-700 text-center text-sm text-gray-400">
+            ${projects.length} saved project(s)
+          </div>
+        </div>
+      `;
+      
+      document.body.appendChild(dialog);
+    }
+
+    // Load a specific project by name
+    function loadSelectedProject(projectName) {
+      const projects = JSON.parse(localStorage.getItem('vfxBidbotProjects') || '[]');
+      const project = projects.find(p => p.name === projectName);
+      
+      if (!project) {
+        alert('Project not found!');
+        return;
+      }
+      
+      // Load the project data
+      const { taggedShots, fontSize, scriptContent, vfxTags } = project.data;
+      
+      // Update the application state
+      window.taggedShots = taggedShots;
+      window.fontSize = fontSize;
+      window.vfxTags = vfxTags;
+      
+      document.getElementById('scriptInput').innerHTML = scriptContent;
+      updateFontSize(fontSize);
+      renderTaggedShots();
+      renderTaggingTab();
+      renderTagManagementTable();
+      
+      // Close the dialog
+      document.querySelector('.fixed.inset-0').remove();
+      
+      alert(`Project "${projectName}" loaded successfully!`);
+    }
+
+    // Delete a saved project
+    function deleteProject(projectName) {
+      if (!confirm(`Are you sure you want to delete project "${projectName}"?`)) {
+        return;
+      }
+      
+      const projects = JSON.parse(localStorage.getItem('vfxBidbotProjects') || '[]');
+      const updatedProjects = projects.filter(p => p.name !== projectName);
+      
+      localStorage.setItem('vfxBidbotProjects', JSON.stringify(updatedProjects));
+      
+      // Refresh the project list
+      const dialog = document.querySelector('.fixed.inset-0');
+      if (dialog) {
+        dialog.remove();
+        loadProject();
+      }
     }
 
     // Load from localStorage
