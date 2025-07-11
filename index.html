@@ -217,19 +217,19 @@
         <div class="font-size-control">
           <i class="fas fa-font text-gray-400 text-sm"></i>
           <input 
-            type="range" 
-            min="8" 
-            max="24" 
-            value="12" 
-            class="font-size-slider" 
-            id="fontSizeSlider"
+             type="range"
+             min="8"
+             max="24"
+             value="12"
+             class="font-size-slider"
+             id="fontSizeSlider"
             oninput="updateFontSize(this.value)"
           >
           <span class="font-size-value" id="fontSizeValue">12px</span>
         </div>
       </div>
       <div 
-        id="scriptInput" 
+        id="scriptInput"
         contenteditable="true"
         onmouseup="storeSelection()"
         onkeyup="storeSelection()"
@@ -252,26 +252,26 @@ A massive explosion rocks the downtown area. Cars flip through the air as debris
       <!-- Tab Navigation -->
       <div class="bg-gray-900/50 flex border-b border-gray-700">
         <button 
-          onclick="switchTab('tagging')"
-          class="tab-button flex-1 py-3 px-4 text-center font-medium border-b-2 border-cyan-500 text-cyan-400 hover:bg-gray-800/50 transition-all flex items-center justify-center space-x-2"
-          id="tagging-tab-btn"
+           onclick="switchTab('tagging')"
+           class="tab-button flex-1 py-3 px-4 text-center font-medium border-b-2 border-cyan-500 text-cyan-400 hover:bg-gray-800/50 transition-all flex items-center justify-center space-x-2"
+           id="tagging-tab-btn"
         >
           <i class="fas fa-tag"></i>
           <span>VFX Tagging</span>
         </button>
         <button 
-          onclick="switchTab('history')"
-          class="tab-button flex-1 py-3 px-4 text-center font-medium border-b-2 border-transparent hover:bg-gray-800/50 transition-all flex items-center justify-center space-x-2"
-          id="history-tab-btn"
+           onclick="switchTab('history')"
+           class="tab-button flex-1 py-3 px-4 text-center font-medium border-b-2 border-transparent hover:bg-gray-800/50 transition-all flex items-center justify-center space-x-2"
+           id="history-tab-btn"
         >
           <i class="fas fa-history"></i>
           <span>Tagged Shots</span>
           <span id="taggedCount" class="bg-cyan-500/20 text-cyan-400 text-2xs px-1.5 py-0.5 rounded-full">0</span>
         </button>
         <button 
-          onclick="switchTab('stats')"
-          class="tab-button flex-1 py-3 px-4 text-center font-medium border-b-2 border-transparent hover:bg-gray-800/50 transition-all flex items-center justify-center space-x-2"
-          id="stats-tab-btn"
+           onclick="switchTab('stats')"
+           class="tab-button flex-1 py-3 px-4 text-center font-medium border-b-2 border-transparent hover:bg-gray-800/50 transition-all flex items-center justify-center space-x-2"
+           id="stats-tab-btn"
         >
           <i class="fas fa-chart-pie"></i>
           <span>Statistics</span>
@@ -351,7 +351,7 @@ A massive explosion rocks the downtown area. Cars flip through the air as debris
               <i class="fas fa-search text-gray-500"></i>
             </div>
             <input 
-              type="text"
+               type="text"
               id="tagSearch"
               placeholder="Search tags..."
               onkeyup="filterTags()"
@@ -505,5 +505,594 @@ A massive explosion rocks the downtown area. Cars flip through the air as debris
             <div class="tag-group" data-category="3d-object">
               <div class="accordion-header flex justify-between items-center p-2 bg-gray-900/50 rounded-lg cursor-pointer" onclick="toggleAccordion(this)">
                 <h3 class="text-sm font-semibold uppercase tracking-wider text-cyan-400 flex items-center space-x-2">
-                 
+                  <i class="fas fa-cube"></i>
+                  <span>3D OBJECT</span>
+                </h3>
+                <i class="fas fa-chevron-down text-gray-500 transform transition-transform"></i>
+              </div>
+              <div class="accordion-content mt-2 grid grid-cols-1 sm:grid-cols-3 gap-2 p-2 hidden">
+                <button onclick="selectTag(this)" class="tag-button px-3 py-2 bg-gray-800 hover:bg-gray-700 border border-gray-700 rounded-lg text-sm text-left transition-all hover:shadow-md">
+                  3D OBJECT SIMPL
+                </button>
+                <button onclick="selectTag(this)" class="tag-button px-3 py-2 bg-gray-800 hover:bg-gray-700 border border-gray-700 rounded-lg text-sm text-left transition-all hover:shadow-md">
+                  3D OBJECT MED
+                </button>
+                <button onclick="selectTag(this)" class="tag-button px-3 py-2 bg-gray-800 hover:bg-gray-700 border border-gray-700 rounded-lg text-sm text-left transition-all hover:shadow-md">
+                  3D OBJECT COMPLEX
+                </button>
+              </div>
+            </div>
+
+            <!-- 3D CHARACTER -->
+            <div class="tag-group" data-category="3d-character">
+              <div class="accordion-header flex justify-between items-center p-2 bg-gray-900/50 rounded-lg cursor-pointer" onclick="toggleAccordion(this)">
+                <h3 class="text-sm font-semibold uppercase tracking-wider text-cyan-400 flex items-center space-x-2">
+                  <i class="fas fa-user-astronaut"></i>
+                  <span>3D CHARACTER</span>
+                </h3>
+                <i class="fas fa-chevron-down text-gray-500 transform transition-transform"></i>
+              </div>
+              <div class="accordion-content mt-2 grid grid-cols-1 sm:grid-cols-3 gap-2 p-2 hidden">
+                <button onclick="selectTag(this)" class="tag-button px-3 py-2 bg-gray-800 hover:bg-gray-700 border border-gray-700 rounded-lg text-sm text-left transition-all hover:shadow-md">
+                  3D CHARACTER SIMPL
+                </button>
+                <button onclick="selectTag(this)" class="tag-button px-3 py-2 bg-gray-800 hover:bg-gray-700 border border-gray-700 rounded-lg text-sm text-left transition-all hover:shadow-md">
+                  3D CHARACTER MED
+                </button>
+                <button onclick="selectTag(this)" class="tag-button px-3 py-2 bg-gray-800 hover:bg-gray-700 border border-gray-700 rounded-lg text-sm text-left transition-all hover:shadow-md">
+                  3D CHARACTER COMPLEX
+                </button>
+              </div>
+            </div>
+
+            <!-- 3D FX -->
+            <div class="tag-group" data-category="3d-fx">
+              <div class="accordion-header flex justify-between items-center p-2 bg-gray-900/50 rounded-lg cursor-pointer" onclick="toggleAccordion(this)">
+                <h3 class="text-sm font-semibold uppercase tracking-wider text-cyan-400 flex items-center space-x-2">
+                  <i class="fas fa-fire"></i>
+                  <span>3D FX</span>
+                </h3>
+                <i class="fas fa-chevron-down text-gray-500 transform transition-transform"></i>
+              </div>
+              <div class="accordion-content mt-2 grid grid-cols-1 sm:grid-cols-3 gap-2 p-2 hidden">
+                <button onclick="selectTag(this)" class="tag-button px-3 py-2 bg-gray-800 hover:bg-gray-700 border border-gray-700 rounded-lg text-sm text-left transition-all hover:shadow-md">
+                  3D FX SIMPL
+                </button>
+                <button onclick="selectTag(this)" class="tag-button px-3 py-2 bg-gray-800 hover:bg-gray-700 border border-gray-700 rounded-lg text-sm text-left transition-all hover:shadow-md">
+                  3D FX MED
+                </button>
+                <button onclick="selectTag(this)" class="tag-button px-3 py-2 bg-gray-800 hover:bg-gray-700 border border-gray-700 rounded-lg text-sm text-left transition-all hover:shadow-md">
+                  3D FX COMPLEX
+                </button>
+              </div>
+            </div>
+
+            <!-- PREVIS -->
+            <div class="tag-group" data-category="previs">
+              <div class="accordion-header flex justify-between items-center p-2 bg-gray-900/50 rounded-lg cursor-pointer" onclick="toggleAccordion(this)">
+                <h3 class="text-sm font-semibold uppercase tracking-wider text-cyan-400 flex items-center space-x-2">
+                  <i class="fas fa-video"></i>
+                  <span>PREVIS</span>
+                </h3>
+                <i class="fas fa-chevron-down text-gray-500 transform transition-transform"></i>
+              </div>
+              <div class="accordion-content mt-2 grid grid-cols-1 sm:grid-cols-3 gap-2 p-2 hidden">
+                <button onclick="selectTag(this)" class="tag-button px-3 py-2 bg-gray-800 hover:bg-gray-700 border border-gray-700 rounded-lg text-sm text-left transition-all hover:shadow-md">
+                  PREVIS SIMPL
+                </button>
+                <button onclick="selectTag(this)" class="tag-button px-3 py-2 bg-gray-800 hover:bg-gray-700 border border-gray-700 rounded-lg text-sm text-left transition-all hover:shadow-md">
+                  PREVIS MED
+                </button>
+                <button onclick="selectTag(this)" class="tag-button px-3 py-2 bg-gray-800 hover:bg-gray-700 border border-gray-700 rounded-lg text-sm text-left transition-all hover:shadow-md">
+                  PREVIS COMPLEX
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- History Tab -->
+        <div id="history-tab" class="tab-content p-4 hidden h-full">
+          <div class="flex justify-between items-center mb-4">
+            <h3 class="text-lg font-semibold text-cyan-400">Tagged Shots</h3>
+            <button onclick="clearAllTags()" class="px-3 py-1 bg-red-600/20 hover:bg-red-600/30 text-red-400 rounded-lg text-sm transition-all">
+              <i class="fas fa-trash mr-1"></i> Clear All
+            </button>
+          </div>
+          <div id="taggedShotsList" class="space-y-2 overflow-auto max-h-[calc(100%-3rem)]">
+            <!-- Tagged shots will appear here -->
+          </div>
+        </div>
+
+        <!-- Stats Tab -->
+        <div id="stats-tab" class="tab-content p-4 hidden h-full">
+          <h3 class="text-lg font-semibold text-cyan-400 mb-4">Statistics</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="bg-gray-900/50 rounded-lg p-4">
+              <h4 class="text-sm font-medium text-gray-400 mb-2">VFX Count by Type</h4>
+              <div id="vfxTypeChart" class="h-48">
+                <!-- Chart will be rendered here -->
+              </div>
+            </div>
+            <div class="bg-gray-900/50 rounded-lg p-4">
+              <h4 class="text-sm font-medium text-gray-400 mb-2">Complexity Breakdown</h4>
+              <div id="complexityChart" class="h-48">
+                <!-- Chart will be rendered here -->
+              </div>
+            </div>
+          </div>
+          <div class="mt-4 bg-gray-900/50 rounded-lg p-4">
+            <h4 class="text-sm font-medium text-gray-400 mb-2">Detailed Statistics</h4>
+            <table class="stats-table w-full">
+              <thead>
+                <tr>
+                  <th>VFX Type</th>
+                  <th>Simple</th>
+                  <th>Medium</th>
+                  <th>Complex</th>
+                  <th>Total</th>
+                </tr>
+              </thead>
+              <tbody id="statsTableBody">
+                <!-- Stats will be populated here -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    // Global variables
+    let currentSelection = null;
+    let selectedTag = null;
+    let taggedShots = [];
+    let fontSize = 12;
+
+    // Initialize the app
+    document.addEventListener('DOMContentLoaded', function() {
+      updateFontSize(12);
+      loadFromLocalStorage();
+      updateTaggedCount();
+    });
+
+    // Store the current text selection
+    function storeSelection() {
+      const selection = window.getSelection();
+      if (selection && selection.rangeCount > 0 && !selection.isCollapsed) {
+        currentSelection = selection.getRangeAt(0);
+        
+        // Update the preview
+        const preview = document.getElementById('selectedPreview');
+        preview.textContent = currentSelection.toString();
+        preview.classList.remove('italic');
+      }
+    }
+
+    // Update font size of script input
+    function updateFontSize(size) {
+      fontSize = size;
+      document.getElementById('scriptInput').style.fontSize = `${size}px`;
+      document.getElementById('fontSizeValue').textContent = `${size}px`;
+    }
+
+    // Select a VFX tag (can select multiple)
+    function selectTag(button) {
+      // Toggle active state
+      button.classList.toggle('active');
+      
+      // Get all active tags
+      selectedTag = Array.from(document.querySelectorAll('.tag-button.active'))
+        .map(btn => btn.textContent.trim())
+        .join(', ');
+    }
+
+    // Tag the selected text with VFX
+    function tagVFX() {
+      const activeTags = Array.from(document.querySelectorAll('.tag-button.active'))
+        .map(btn => btn.textContent.trim());
+      
+      if (!currentSelection || activeTags.length === 0) {
+        alert('Please select text in the script and choose at least one VFX tag.');
+        return;
+      }
+
+      const scene = document.getElementById('sceneInput').value.trim() || 'SCN';
+      const shot = document.getElementById('shotInput').value.trim() || '001';
+      const comment = document.getElementById('commentBox').value.trim();
+      
+      // Get the selected text
+      const selectedText = currentSelection.toString();
+      
+      // Create a span to highlight the tagged text
+      const span = document.createElement('span');
+      span.className = 'selected-text';
+      span.dataset.scene = scene;
+      span.dataset.shot = shot;
+      span.dataset.tag = activeTags.join(', ');
+      span.dataset.comment = comment;
+      
+      // Replace the selected text with our span
+      currentSelection.deleteContents();
+      span.appendChild(document.createTextNode(selectedText));
+      currentSelection.insertNode(span);
+      
+      // Check if we already have this scene/shot combination
+      const existingShot = taggedShots.find(s => 
+        s.scene === scene && s.shot === shot && s.text === selectedText
+      );
+      
+      if (existingShot) {
+        // Merge tags
+        const existingTags = existingShot.tag.split(', ');
+        const newTags = [...new Set([...existingTags, ...activeTags])]; // Remove duplicates
+        existingShot.tag = newTags.join(', ');
+      } else {
+        // Add new shot with all tags
+        taggedShots.push({
+          scene,
+          shot,
+          tag: activeTags.join(', '),
+          text: selectedText,
+          comment
+        });
+      }
+      
+      // Update UI
+      updateTaggedCount();
+      saveToLocalStorage();
+      renderTaggedShots();
+      
+      // Clear selection
+      clearSelection();
+    }
+
+    // Clear the current selection (keeps tags selected)
+    function clearSelection() {
+      currentSelection = null;
+      document.getElementById('selectedPreview').textContent = '(Select text in the script to preview it here)';
+      document.getElementById('selectedPreview').classList.add('italic');
+      document.getElementById('commentBox').value = '';
+    }
+
+    // Switch between tabs
+    function switchTab(tabName) {
+      // Hide all tab contents
+      document.querySelectorAll('.tab-content').forEach(tab => {
+        tab.classList.add('hidden');
+      });
+      
+      // Show selected tab
+      document.getElementById(`${tabName}-tab`).classList.remove('hidden');
+      
+      // Update tab buttons
+      document.querySelectorAll('.tab-button').forEach(btn => {
+        btn.classList.remove('border-cyan-500', 'text-cyan-400');
+        btn.classList.add('border-transparent');
+      });
+      
+      document.getElementById(`${tabName}-tab-btn`).classList.add('border-cyan-500', 'text-cyan-400');
+      
+      // If switching to stats tab, update stats
+      if (tabName === 'stats') {
+        updateStats();
+      }
+    }
+
+    // Toggle accordion sections
+    function toggleAccordion(header) {
+      const content = header.nextElementSibling;
+      const icon = header.querySelector('.fa-chevron-down');
+      
+      content.classList.toggle('hidden');
+      icon.classList.toggle('rotate-180');
+    }
+
+    // Filter tags based on search input
+    function filterTags() {
+      const searchTerm = document.getElementById('tagSearch').value.toLowerCase();
+      
+      document.querySelectorAll('.tag-group').forEach(group => {
+        let hasMatches = false;
+        const buttons = group.querySelectorAll('.tag-button');
+        
+        buttons.forEach(button => {
+          const tagText = button.textContent.toLowerCase();
+          if (tagText.includes(searchTerm)) {
+            button.style.display = 'block';
+            hasMatches = true;
+          } else {
+            button.style.display = 'none';
+          }
+        });
+        
+        // Show/hide entire group based on matches
+        if (hasMatches || searchTerm === '') {
+          group.style.display = 'block';
+        } else {
+          group.style.display = 'none';
+        }
+      });
+    }
+
+    // Update the tagged shots count
+    function updateTaggedCount() {
+      document.getElementById('taggedCount').textContent = taggedShots.length;
+    }
+
+    // Render the list of tagged shots
+    function renderTaggedShots() {
+      const container = document.getElementById('taggedShotsList');
+      container.innerHTML = '';
+      
+      if (taggedShots.length === 0) {
+        container.innerHTML = '<p class="text-gray-500 italic text-center py-4">No tagged shots yet</p>';
+        return;
+      }
+      
+      taggedShots.forEach((shot, index) => {
+        const shotElement = document.createElement('div');
+        shotElement.className = 'bg-gray-900/50 rounded-lg p-3 border border-gray-700';
+        shotElement.innerHTML = `
+          <div class="flex justify-between items-start mb-2">
+            <div class="flex items-center space-x-2">
+              <span class="text-xs font-mono bg-gray-800 px-2 py-1 rounded">${shot.scene}_${shot.shot}</span>
+              <span class="text-xs font-semibold text-cyan-400">${shot.tag.split(', ').map(tag => 
+                `<span class="tag-chip px-1 py-0.5 rounded mr-1">${tag}</span>`
+              ).join('')}</span>
+            </div>
+            <button onclick="removeTaggedShot(${index})" class="text-gray-500 hover:text-red-400 transition-colors">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+          <div class="text-sm text-gray-300 mb-2">${shot.text}</div>
+          ${shot.comment ? `<div class="text-xs text-gray-400 italic">Note: ${shot.comment}</div>` : ''}
+        `;
+        container.appendChild(shotElement);
+      });
+    }
+
+    // Remove a tagged shot
+    function removeTaggedShot(index) {
+      const shotToRemove = taggedShots[index];
+      taggedShots.splice(index, 1);
+      updateTaggedCount();
+      saveToLocalStorage();
+      renderTaggedShots();
+      
+      // Also remove the highlight from the script
+      const spans = document.querySelectorAll('#scriptInput span.selected-text');
+      spans.forEach(span => {
+        if (span.textContent === shotToRemove.text && 
+            span.dataset.scene === shotToRemove.scene && 
+            span.dataset.shot === shotToRemove.shot) {
+          const textNode = document.createTextNode(span.textContent);
+          span.parentNode.replaceChild(textNode, span);
+        }
+      });
+    }
+
+    // Clear all tagged shots
+    function clearAllTags() {
+      if (confirm('Are you sure you want to clear all tagged shots?')) {
+        taggedShots = [];
+        updateTaggedCount();
+        saveToLocalStorage();
+        renderTaggedShots();
+        
+        // Remove all highlights from the script
+        const spans = document.querySelectorAll('#scriptInput span.selected-text');
+        spans.forEach(span => {
+          const textNode = document.createTextNode(span.textContent);
+          span.parentNode.replaceChild(textNode, span);
+        });
+      }
+    }
+
+    // Update statistics
+    function updateStats() {
+      // Group by VFX type
+      const statsByType = {};
+      const statsByComplexity = { simple: 0, medium: 0, complex: 0 };
+      
+      taggedShots.forEach(shot => {
+        // Extract base type (before SIMPL/MED/COMPLEX)
+        const baseType = shot.tag.replace(/\s(SIMPL|MED|COMPLEX)$/, '');
+        
+        if (!statsByType[baseType]) {
+          statsByType[baseType] = { simple: 0, medium: 0, complex: 0, total: 0 };
+        }
+        
+        // Count by complexity
+        if (shot.tag.includes('SIMPL')) {
+          statsByType[baseType].simple++;
+          statsByComplexity.simple++;
+        } else if (shot.tag.includes('MED')) {
+          statsByType[baseType].medium++;
+          statsByComplexity.medium++;
+        } else if (shot.tag.includes('COMPLEX')) {
+          statsByType[baseType].complex++;
+          statsByComplexity.complex++;
+        }
+        
+        statsByType[baseType].total++;
+      });
+      
+      // Update stats table
+      const tableBody = document.getElementById('statsTableBody');
+      tableBody.innerHTML = '';
+      
+      for (const [type, counts] of Object.entries(statsByType)) {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${type}</td>
+          <td>${counts.simple}</td>
+          <td>${counts.medium}</td>
+          <td>${counts.complex}</td>
+          <td>${counts.total}</td>
+        `;
+        tableBody.appendChild(row);
+      }
+      
+      // Simple chart for VFX types
+      const typeChart = document.getElementById('vfxTypeChart');
+      typeChart.innerHTML = `
+        <div class="h-full flex items-end space-x-1">
+          ${Object.entries(statsByType).map(([type, counts]) => `
+            <div class="flex-1 flex flex-col items-center">
+              <div 
+                class="w-full bg-gradient-to-t from-cyan-500 to-blue-600 rounded-t-sm" 
+                style="height: ${(counts.total / Math.max(1, taggedShots.length)) * 100}%"
+              ></div>
+              <div class="text-xs text-gray-400 mt-1 truncate w-full text-center">${type.split(' ')[0]}</div>
+            </div>
+          `).join('')}
+        </div>
+      `;
+      
+      // Simple chart for complexity
+      const complexityChart = document.getElementById('complexityChart');
+      complexityChart.innerHTML = `
+        <div class="h-full flex items-center justify-center">
+          <div class="relative w-32 h-32">
+            <svg viewBox="0 0 36 36" class="circular-chart">
+              <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+              <path 
+                class="circle-fill-1" 
+                stroke-dasharray="${statsByComplexity.simple}, 100" 
+                d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" 
+              />
+              <path 
+                class="circle-fill-2" 
+                stroke-dasharray="${statsByComplexity.medium}, 100" 
+                stroke-dashoffset="${-statsByComplexity.simple}" 
+                d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" 
+              />
+              <path 
+                class="circle-fill-3" 
+                stroke-dasharray="${statsByComplexity.complex}, 100" 
+                stroke-dashoffset="${-(statsByComplexity.simple + statsByComplexity.medium)}" 
+                d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" 
+              />
+            </svg>
+            <div class="absolute inset-0 flex items-center justify-center flex-col">
+              <div class="text-2xl font-bold text-cyan-400">${taggedShots.length}</div>
+              <div class="text-xs text-gray-400">Total Shots</div>
+            </div>
+          </div>
+        </div>
+        <style>
+          .circular-chart {
+            display: block;
+            margin: 10px auto;
+            max-width: 80%;
+            max-height: 250px;
+          }
+          .circle-bg {
+            fill: none;
+            stroke: rgba(255, 255, 255, 0.1);
+            stroke-width: 3;
+          }
+          .circle-fill-1 {
+            fill: none;
+            stroke: #00d4ff;
+            stroke-width: 3;
+            animation: circle-fill 1s ease-out forwards;
+          }
+          .circle-fill-2 {
+            fill: none;
+            stroke: #7c3aed;
+            stroke-width: 3;
+            animation: circle-fill 1s ease-out forwards;
+          }
+          .circle-fill-3 {
+            fill: none;
+            stroke: #10b981;
+            stroke-width: 3;
+            animation: circle-fill 1s ease-out forwards;
+          }
+          @keyframes circle-fill {
+            0% { stroke-dasharray: 0, 100; }
+          }
+        </style>
+      `;
+    }
+
+    // Export to CSV
+    function exportCSV() {
+      if (taggedShots.length === 0) {
+        alert('No tagged shots to export.');
+        return;
+      }
+      
+      let csv = 'Scene,Shot,VFX Type,Description,Notes\n';
+      
+      taggedShots.forEach(shot => {
+        csv += `"${shot.scene}","${shot.shot}","${shot.tag.replace(/"/g, '""')}","${shot.text.replace(/"/g, '""')}","${shot.comment.replace(/"/g, '""')}"\n`;
+      });
+      
+      const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = 'vfx_bidbot_export.csv';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+
+    // Export to JSON
+    function exportJSON() {
+      if (taggedShots.length === 0) {
+        alert('No tagged shots to export.');
+        return;
+      }
+      
+      const data = {
+        metadata: {
+          generatedAt: new Date().toISOString(),
+          totalShots: taggedShots.length
+        },
+        shots: taggedShots
+      };
+      
+      const json = JSON.stringify(data, null, 2);
+      const blob = new Blob([json], { type: 'application/json;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = 'vfx_bidbot_export.json';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+
+    // Save to localStorage
+    function saveToLocalStorage() {
+      localStorage.setItem('vfxBidbotData', JSON.stringify({
+        taggedShots,
+        fontSize,
+        scriptContent: document.getElementById('scriptInput').innerHTML
+      }));
+    }
+
+    // Load from localStorage
+    function loadFromLocalStorage() {
+      const savedData = localStorage.getItem('vfxBidbotData');
+      if (savedData) {
+        const data = JSON.parse(savedData);
+        taggedShots = data.taggedShots || [];
+        fontSize = data.fontSize || 12;
+        
+        if (data.scriptContent) {
+          document.getElementById('scriptInput').innerHTML = data.scriptContent;
+        }
+        
+        updateFontSize(fontSize);
+        renderTaggedShots();
+      }
+    }
+  </script>
+</body>
 </html>
