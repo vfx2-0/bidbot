@@ -642,6 +642,13 @@ EXT. CITY STREET - DAY
                 </div>
                 <p class="text-xs text-gray-400">Special effects simulation</p>
               </div>
+              <div class="bg-gray-900/50 p-3 rounded-lg">
+                <div class="flex items-center mb-2">
+                  <i class="fas fa-cubes text-blue-400 mr-2"></i>
+                  <span class="text-sm font-medium">ASSETS</span>
+                </div>
+                <p class="text-xs text-gray-400">3D models and assets</p>
+              </div>
             </div>
           </div>
         </div>
@@ -666,7 +673,8 @@ EXT. CITY STREET - DAY
       { id: '3d-object', name: '3D OBJECT', icon: 'fas fa-cube' },
       { id: '3d-character', name: '3D CHARACTER', icon: 'fas fa-user-astronaut' },
       { id: '3d-fx', name: '3D FX', icon: 'fas fa-fire' },
-      { id: 'previs', name: 'PREVIS', icon: 'fas fa-video' }
+      { id: 'previs', name: 'PREVIS', icon: 'fas fa-video' },
+      { id: 'assets', name: 'ASSETS', icon: 'fas fa-cubes' }
     ];
     
     // Default VFX tags
@@ -772,7 +780,8 @@ EXT. CITY STREET - DAY
       span.className = 'selected-text';
       span.dataset.scene = scene;
       span.dataset.shot = shot;
-      span.dataset.tag = activeTags.join(', ');
+      // Store tags and assets together in tag attribute for now
+      span.dataset.tag = activeTags.join(', '); 
       span.dataset.comment = comment;
                     
       // Replace the selected text with our span
@@ -960,10 +969,15 @@ EXT. CITY STREET - DAY
         return;
       }
                     
-      let csv = 'Scene,Shot,VFX Type,Description,Notes\n';
+      let csv = 'Scene,Shot,VFX Type,Asset,Description,Notes\n';
                     
       taggedShots.forEach(shot => {
-        csv += `"${shot.scene}","${shot.shot}","${shot.tag.replace(/"/g, '""')}","${shot.text.replace(/"/g, '""')}","${shot.comment.replace(/"/g, '""')}"\n`;
+        // Separate VFX tags from assets
+        const tags = shot.tag.split(', ');
+        const vfxTags = tags.filter(tag => !vfxTags.find(t => t.tag === tag && t.group === 'assets')).join(', ');
+        const asset = tags.filter(tag => vfxTags.find(t => t.tag === tag && t.group === 'assets')).join(', ');
+        
+        csv += `"${shot.scene}","${shot.shot}","${vfxTags.replace(/"/g, '""')}","${asset.replace(/"/g, '""')}","${shot.text.replace(/"/g, '""')}","${shot.comment.replace(/"/g, '""')}"\n`;
       });
                     
       const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
