@@ -368,8 +368,12 @@
     </div>
     <div class="flex flex-wrap justify-center gap-2">
       <button onclick="exportCSV()" class="flex items-center space-x-1 px-3 py-1.5 bg-gradient-to-r from-gray-700 to-blue-900 hover:from-gray-800 hover:to-blue-950 text-white rounded-lg transition-all hover:shadow-lg hover:-translate-y-0.5">
-        <i class="fas fa-file-export"></i>
+        <i class="fas fa-file-csv"></i>
         <span>Export CSV</span>
+      </button>
+      <button onclick="exportJSON()" class="flex items-center space-x-1 px-3 py-1.5 bg-gradient-to-r from-gray-700 to-purple-900 hover:from-gray-800 hover:to-purple-950 text-white rounded-lg transition-all hover:shadow-lg hover:-translate-y-0.5">
+        <i class="fas fa-file-code"></i>
+        <span>Export JSON</span>
       </button>
     </div>
   </header>
@@ -965,15 +969,10 @@ EXT. CITY STREET - DAY
         return;
       }
                     
-      let csv = 'Scene,Shot,VFX Type,Asset,Description,Notes\n';
+      let csv = 'Scene,Shot,VFX Tags,Description,Notes\n';
                     
       taggedShots.forEach(shot => {
-        // Separate VFX tags from assets
-        const tags = shot.tag.split(', ');
-        const vfxTags = tags.filter(tag => !vfxTags.find(t => t.tag === tag && t.group === 'assets')).join(', ');
-        const asset = tags.filter(tag => vfxTags.find(t => t.tag === tag && t.group === 'assets')).join(', ');
-        
-        csv += `"${shot.scene}","${shot.shot}","${vfxTags.replace(/"/g, '""')}","${asset.replace(/"/g, '""')}","${shot.text.replace(/"/g, '""')}","${shot.comment.replace(/"/g, '""')}"\n`;
+        csv += `"${shot.scene}","${shot.shot}","${shot.tag.replace(/"/g, '""')}","${shot.text.replace(/"/g, '""')}","${shot.comment.replace(/"/g, '""')}"\n`;
       });
                     
       const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
@@ -998,7 +997,13 @@ EXT. CITY STREET - DAY
           generatedAt: new Date().toISOString(),
           totalShots: taggedShots.length
         },
-        shots: taggedShots
+        shots: taggedShots.map(shot => ({
+          scene: shot.scene,
+          shot: shot.shot,
+          tags: shot.tag.split(', '),
+          description: shot.text,
+          notes: shot.comment
+        }))
       };
                     
       const json = JSON.stringify(data, null, 2);
