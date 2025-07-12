@@ -50,4 +50,6 @@ Improvements / Features To Add
 
  Downloadable PWA (works offline, all devices)
 
+ Add Asset Group VFX Tag
+
 
