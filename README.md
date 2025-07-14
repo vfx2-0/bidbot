@@ -1,4 +1,4 @@
-# BidBot
+# BidCraft
 A lightweight, browser-based tool for breaking down movie scripts for VFX bids.
 
 Features:
