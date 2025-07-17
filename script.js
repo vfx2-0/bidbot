@@ -1,8 +1,12 @@
 function breakdownScript() {
   const input = document.getElementById("scriptInput").value;
 
-  // This splits on any line starting with INT. or EXT.
-  const scenes = input.split(/\n(?=INT\.|EXT\.)/g).filter(Boolean);
+  // Split on lines that start with scene headings such as
+  // INT., EXT., INT/EXT or EXT./INT. The match is case-insensitive
+  // and ignores optional spaces and periods around the slash.
+  const scenes = input
+    .split(/\n(?=[ \t]*(?:INT|EXT)\.?[ \t]*(?:\/[ \t]*(?:INT|EXT)\.?)?)/gi)
+    .filter(Boolean);
 
   const output = document.getElementById("output");
   output.innerHTML = '';
